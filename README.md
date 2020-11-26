@@ -1,1 +1,1 @@
-# The-Standard
+# The Standard
