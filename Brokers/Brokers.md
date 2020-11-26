@@ -6,7 +6,7 @@ They are wrappers around any external libraries, resources or APIs to satisfy a 
 
 Brokers in general are meant to be disposable and replaceable - they are built with the understanding that technology evolves and changes all the time and therefore they shall be at some point in time in the lifecycle of a given application be replaced with a modern technology that gets the job done faster.
 
-But Brokers also ensure that your business is pluggable by abstracting away any specific external resource dependencies from what you software is actually trying to accomplish.
+But Brokers also ensure that your business is pluggable by abstracting away any specific external resource dependencies from what your software is actually trying to accomplish.
 
 
 ## 1. On The Map
@@ -258,3 +258,10 @@ namespace OtripleS.Web.Api.Brokers.Storage
     }
 }
 ```
+
+## 6. Summary
+Brokers are the first layer of abstraction between your business logic and the outside world, but they are not the only layer of abstraction. simply because there will still be few native models that leak through your brokers to your broker-neighboring services which is natural to avoid doing any mappings outside of the realm of logic, in our case here the foundation services.
+
+For instnace, in a storage broker, regardless what ORM you are using, some native exceptions from your ORM (EntityFramework for instance) will occur, such as `DbUpdateException` or `SqlException` - in that case we need another layer of abstraction to play the role of a mapper between these exceptions and our core logic to convert them into local exception models. 
+
+This responsibility lies in the hands of the broker-neighboring services, I also call them foundation services, these services are the last point of abstraction before your core logic, in which everything becomes nothing but local models and contracts.

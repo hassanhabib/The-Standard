@@ -1,4 +1,4 @@
-# The Standard
+# The Standard (v 1.0.0)
 
 - [Brokers](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md)
   - [0. Introduction](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#0-introduction)
