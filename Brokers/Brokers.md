@@ -109,20 +109,94 @@ But in case of concrete implementations of brokers, it all depends on how many b
 
 However, if your application supports multiple queues, storages or e-mail service providers you might need to start be specifying the overall target of the component, for instance, an `IQueueBroker` would have multiple implementations such as `NotificationQueueBroker` and `OrdersQueueBroker`.
 
-But if the concrete implementations target the same model and business value, then a diversion to the technology might be more befitting in this case, for instance in the case of an `IStorageBroker` two different concrete implementations would be `SqlStorageBroker` and `MongoStroageBroker` this case is very possible in situations where environment costs are reduced in lower than production infrastructure for instance. 
+But if the concrete implementations target the same model and business value, then a diversion to the technology might be more befitting in this case, for instance in the case of an `IStorageBroker` two different concrete implementations would be `SqlStorageBroker` and `MongoStroageBroker` this case is very possible in situations where environment costs are reduced in lower than production infrastructure for instance.
 
+#### 2.6 Language
+Brokers speak the language of the technologies they support.
+For instnace, in a storage broker, we say `SelectById` to match the SQL `Select` statement and in a queue broker we say `Enqueue` to match the language.
 
-## 3. Common Brokers
+If a broker is supporting an API endpoint, then it shall follow the RESTFul operations language, such as `POST`, `GET` or `PUT`, here's an example:
+
+```csharp
+
+    public async ValueTask<Student> PostStudentAsync(Student student) =>
+        await this.PostAsync(RelativeUrl, student);
+
+```
+
+## 3. Organization
+Brokers that support multiple entities such as Storage brokers should leverage partial classes to break down the responsibilites per entities.
+
+For instance, if we have a storage broker that provides all CRUD operations for both `Student` and `Teacher` models, then the organization of the files should be as follows:
+
+- IStorageBroker.cs
+  - IStorageBroker.Students.cs
+  - IStorageBroker.Teachers.cs
+- StorageBroker.cs
+  - StorageBroker.Students.cs
+  - StorageBroker.Teachers.cs
+
+The main purpose of this particular organization leveraging partial classes is to seperate the concern for each entity to even a finer level, which should make the maintainability of the software much higher.
+
+## 4. Common Brokers
 In most of the applications built today, there are some common Brokers that are usually needed to get an enterprise application up and running - some of these Brokers are like Storage, Time, APIs, Logging and Queues.
 
 Some of these brokers interact with existing resources on the system such as time to allow broker-neighboring services to treat time as a dependency and control how a particular service would behave based on the value of time at any point in the past, present or the future.
 
 You can find real-world examples of brokers in the OtripleS project [here](https://github.com/hassanhabib/OtripleS/tree/master/OtripleS.Web.Api/Brokers).
 
-## 4. Implementation
-For instance, when we build storage brokers - we maintain a generic contract for all CRUD operations as follows:
+## 5. Implementation
+Here's a real-life implementation of a full storage broker for all CRUD operations for `Student` entity:
 
+###### For IStorageBroker.cs:
 ```csharp
+namespace OtripleS.Web.Api.Brokers.Storage
+{
+    public partial interface IStorageBroker
+    {
+    }
+}
+
+```
+
+###### For StorageBroker.cs:
+```csharp
+using System;
+using EFxceptions.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using OtripleS.Web.Api.Models.Users;
+
+namespace OtripleS.Web.Api.Brokers.Storage
+{
+    public partial class StorageBroker : EFxceptionsContext, IStorageBroker
+    {
+        private readonly IConfiguration configuration;
+
+        public StorageBroker(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+            this.Database.Migrate();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            string connectionString = this.configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+    }
+}
+```
+
+###### For IStorageBroker.Students.cs:
+```csharp
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using OtripleS.Web.Api.Models.Students;
+
+namespace OtripleS.Web.Api.Brokers.Storage
+{
     public partial interface IStorageBroker
     {
         public ValueTask<Student> InsertStudentAsync(Student student);
@@ -131,4 +205,56 @@ For instance, when we build storage brokers - we maintain a generic contract for
         public ValueTask<Student> UpdateStudentAsync(Student student);
         public ValueTask<Student> DeleteStudentAsync(Student student);
     }
+}
 ``` 
+
+###### For StorageBroker.Students.cs:
+```csharp
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using OtripleS.Web.Api.Models.Students;
+
+namespace OtripleS.Web.Api.Brokers.Storage
+{
+    public partial class StorageBroker
+    {
+        public DbSet<Student> Students { get; set; }
+
+        public async ValueTask<Student> InsertStudentAsync(Student student)
+        {
+            EntityEntry<Student> studentEntityEntry = await this.Students.AddAsync(student);
+            await this.SaveChangesAsync();
+
+            return studentEntityEntry.Entity;
+        }
+
+        public IQueryable<Student> SelectAllStudents() => this.Students.AsQueryable();
+
+        public async ValueTask<Student> SelectStudentByIdAsync(Guid studentId)
+        {
+            this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+            return await Students.FindAsync(studentId);
+        }
+
+        public async ValueTask<Student> UpdateStudentAsync(Student student)
+        {
+            EntityEntry<Student> studentEntityEntry = this.Students.Update(student);
+            await this.SaveChangesAsync();
+
+            return studentEntityEntry.Entity;
+        }
+
+        public async ValueTask<Student> DeleteStudentAsync(Student student)
+        {
+            EntityEntry<Student> studentEntityEntry = this.Students.Remove(student);
+            await this.SaveChangesAsync();
+
+            return studentEntityEntry.Entity;
+        }
+    }
+}
+```
