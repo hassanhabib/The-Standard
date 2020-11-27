@@ -1,6 +1,6 @@
 # Services
 
-# 0. Introduction
+## 0. Introduction
 Services in general are the containers of all the business logic in any given software.
 
 When we say business logic, we mainly refer to three main categories of operations, which are validation, processing and integration.

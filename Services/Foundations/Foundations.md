@@ -22,6 +22,10 @@ public async ValueTask<Student> AddStudentAsync(Student student)
 
 This makes broker-neighboring services nothing more than an extra layer of validation on top of the existing primitive operations brokers already offer.
 
+## 1. On The Map
+The broker-neighboring services reside between your brokers and the rest of your application, on the left side higher-order business logic processing services, orchestration, coordination, aggregation or management servies may live, or just simply a controller, a UI component or any other data exposure technology.
+
+![FoundationServices](https://user-images.githubusercontent.com/1453985/100429699-8ca0e580-304a-11eb-80e3-710c39fc8532.png)
 
 ## 1. Characteristics
 ### 1.0 Pure-Primitive
