@@ -17,7 +17,7 @@ Whether the outside world in this instance is just simply a local storage in mem
 In the following low-level architecture for a given API - Brokers reside between our business logic and the external resource:
 
 <div align=center>
-    <img src="https://user-images.githubusercontent.com/1453985/100049682-c4025e80-2dcc-11eb-88f4-3c6087f7eb1e.png" width=70% />
+    <img src="https://user-images.githubusercontent.com/1453985/100049682-c4025e80-2dcc-11eb-88f4-3c6087f7eb1e.png" width=100% />
 </div>
 
 ## 2. Characteristics
