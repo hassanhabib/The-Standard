@@ -15,3 +15,8 @@
   - [4. Common Brokers](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#3-common-brokers)
   - [5. Implementation](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#4-implementation)
 - [Services](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md)
+  - [Introduction]()
+  - [Foundation Services]()
+    - [0. Introduction]()
+    - [1. Charactristics]()
+      - [1.0 Pure Primitive]()
