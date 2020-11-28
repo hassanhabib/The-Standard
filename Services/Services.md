@@ -7,7 +7,7 @@ Services in general are the containers of all the business logic in any given so
 ### 0.0 Services Operations
 When we say business logic, we mainly refer to three main categories of operations, which are validation, processing and integration.
 
-![AllServicesTypes](https://user-images.githubusercontent.com/1453985/100495204-e44c5900-30fd-11eb-92ac-764a24d989c5.png)
+![Services Operations](https://user-images.githubusercontent.com/1453985/100495025-24aad780-30fc-11eb-9cf8-f8a2b31dbef6.png)
 
 
 #### 0.0.0 Validations 
@@ -25,7 +25,7 @@ Every one of these aspects will be discussed in details in the upcoming chapter,
 ### 0.1 Services Types
 But services have several types based on where they stand in any given architecture, they fall under three main categories, which are: validators, orchestrators and aggregators.
 
-![Untitled Diagram (1)](https://user-images.githubusercontent.com/1453985/100495095-fed20280-30fc-11eb-9a50-4ccda7ac90b6.png)
+![Services Types](https://user-images.githubusercontent.com/1453985/100495204-e44c5900-30fd-11eb-92ac-764a24d989c5.png)
 
 #### 0.1.0 Validators
 Validator services are mainly the broker-neighboring services or foundation services. 
