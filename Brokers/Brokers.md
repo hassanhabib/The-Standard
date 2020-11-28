@@ -265,3 +265,36 @@ Brokers are the first layer of abstraction between your business logic and the o
 For instnace, in a storage broker, regardless what ORM you are using, some native exceptions from your ORM (EntityFramework for instance) will occur, such as `DbUpdateException` or `SqlException` - in that case we need another layer of abstraction to play the role of a mapper between these exceptions and our core logic to convert them into local exception models. 
 
 This responsibility lies in the hands of the broker-neighboring services, I also call them foundation services, these services are the last point of abstraction before your core logic, in which everything becomes nothing but local models and contracts.
+
+
+## 7. FAQs
+During the course of time, there have been some common questions that arised by the engineers that I had the opportunity to work with throughout my career - since some of these questions reoccurred on several occassions, I thought it might be useful to aggregate all of them in here for everyone to learn about some other perspectives around brokers.
+
+#### 7.0 Is the brokers pattern the same as the repository pattern?
+Not exactley, at least from an operational standpoint, brokers seems to be more generic than repositories.
+
+Repositories usually target storage-like operations, mainly towards databases. but brokers can be an integration point with any external dependency such as e-mail services, queues, other APIs and such.
+
+A more similar pattern for brokers is the Unit of Work pattern, it mainly focuses on the overall operation without having to tie the definition or the name with any particular operation.
+
+All of these patterns in general try to achieve the same SOLID principles goal, which is the separation of concern, dependency injection and single responsibility.
+
+But because SOLID are principles and not exact guidelines, it's expected to see all different kinds of implementations and patterns to achieve that principle.
+
+
+#### 7.1 Why can't the brokers implement a contract for methods that return an interface instead of a concrete model?
+That would be an ideal situaiton, but that would also require brokers to do a conversion or mapping between the native models returned from the external resource SDKs or APIs and the internal model that adheres to the local contract.
+
+Doing that on the broker level will require pushing business logic into that realm, which is outside of the purpose of that component completely.
+
+Brokers do not get unit tested because they have no business logic in them, they may be a part of an acceptance or an integration test, but certainly not a part of unit level tests - simply because they don't contain any business logic in them.
+
+#### 7.2 If brokers were truely a layer of abstraction from the business logic, how come we allow external exceptions to leak through them onto the services layer?
+Brokers are only the *the first* layer of abstraction, but not the only one - the broker neighboring services are responsible for converting the native exceptions occurring from a broker into a more local exception model that can be handled and processed internally within the business logic realm.
+
+Full pure local code starts to occur on the processing, orchestration, coordination and aggregation layers where all the exceptions, all the returned models and all operations are localized to the system.
+
+#### 7.3 Why do we use partial classes for brokers who handle multiple entities?
+Since brokers are required to own their own configurations, it made more sense to partialize when possible to avoid reconfiguring every storage broker for each entity.
+
+This is a feature in C# specifically as a language, but it should be possible to implement through inheritance in other programming languages.
