@@ -27,8 +27,8 @@ The broker-neighboring services reside between your brokers and the rest of your
 
 ![FoundationServices](https://user-images.githubusercontent.com/1453985/100429699-8ca0e580-304a-11eb-80e3-710c39fc8532.png)
 
-## 1. Characteristics
-### 1.0 Pure-Primitive
+## 2. Characteristics
+### 2.0 Pure-Primitive
 Broker-neighboring services are not allowed to combine multiple primitive operations to achieve a higher-order business logic operation.
 
 For instance, broker-neighboring services cannot offer an *upsert* function, to combine a `Select` operations with an `Update` or `Insert` operations based on the outcome.
