@@ -11,6 +11,7 @@
     - [2.4 Natives from Primitives](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#24-natives-from-primitives)
     - [2.5 Naming Conventions](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#25-naming-conventions)
     - [2.6 Language](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#26-language)
+    - [2.7 Up & Sideways](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#27-up--sideways)
   - [3. Organization](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#3-organization)
   - [4. Common Brokers](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#3-common-brokers)
   - [5. Implementation](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#4-implementation)
