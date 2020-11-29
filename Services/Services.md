@@ -7,7 +7,7 @@ Services in general are the containers of all the business logic in any given so
 ### 0.0 Services Operations
 When we say business logic, we mainly refer to three main categories of operations, which are validation, processing and integration.
 
-![Services Operations](https://user-images.githubusercontent.com/1453985/100529988-896c3d80-31a1-11eb-9117-283af26970a9.png)
+![Services Operations](https://user-images.githubusercontent.com/1453985/100530065-4494d680-31a2-11eb-8393-32b21ab99a3d.png)
 
 
 #### 0.0.0 Validations 
