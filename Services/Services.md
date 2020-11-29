@@ -25,10 +25,10 @@ Every one of these aspects will be discussed in details in the upcoming chapter,
 ### 0.1 Services Types
 But services have several types based on where they stand in any given architecture, they fall under three main categories, which are: validators, orchestrators and aggregators.
 
-![Services Types](https://user-images.githubusercontent.com/1453985/100495204-e44c5900-30fd-11eb-92ac-764a24d989c5.png)
+![All Services Types](https://user-images.githubusercontent.com/1453985/100529444-b23e0400-319c-11eb-816a-59c73154542b.png)
 
 #### 0.1.0 Validators
-Validator services are mainly the broker-neighboring services or foundation services. 
+Validator services are mainly the broker-neighboring services or foundation services.
 
 These services' main responsibility is to add a validation layer on top of the existing primitive operations such as the CRUD operations to ensure incoming and outgoing data is validated structurally, logically and externally before sending the data off outside or insider the system.
 
