@@ -126,7 +126,7 @@ If a broker is supporting an API endpoint, then it shall follow the RESTFul oper
 
 ```
 
-#### 2.7 Up & Sideways
+### 2.7 Up & Sideways
 Brokers cannot call other brokers. that's simply because brokers are the first point of abstraction, they require no additional abstractions and no additional dependencies other than a configuration access model.
 
 Brokers can't also have services as dependencies as the flow in any given system shall come from the services to the brokers and not the other way around.
