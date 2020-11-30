@@ -25,7 +25,7 @@ In the following low-level architecture for a given API - Brokers reside between
 ## 2. Characteristics
 There are few simple rules that govern the implementation of any broker - these rules are:
 
-#### 2.0 Implements a Local Interface
+### 2.0 Implements a Local Interface
 Brokers have to satisfy a local contract. they have to implement a local interface to allow the decoupling between their implementation and the services that consume them.
 
 For instance, given that we have a local contract `IStorageBroker` that requires an implementation for any given CRUD operation for a local model `Student` - the contract operation would be as follows:
@@ -49,7 +49,7 @@ An implementation for a storage broker would be as follows:
 ```
 A local contract implementation can be replaced at any point in time from utilizing the Entity Framework as shows in the previous example, to using a completely different technology like Dapper, or an entirely different infrastructure like an Oracle or Postgres database.
 
-#### 2.1 No Flow Control
+### 2.1 No Flow Control
 Brokers should not have any form of flow-control such as if-statements, while-loops or switch cases - that's simply because flow-control code is considered to be business logic, and it fits better the services layer where business logic should reside not the brokers.
 
 For instance, a broker method that retrieves a list of students from a database would look something like this:
@@ -60,11 +60,11 @@ For instance, a broker method that retrieves a list of students from a database 
 A simple fat-arrow function that calls the native EntityFramework `DbSet<T>` and return a local model like `Student`. 
 
 
-#### 2.2 No Exception Handling
+### 2.2 No Exception Handling
 Exception handling is somewhat a form of flow-control. Brokers are not supposed to handle any exceptions, but rather let the exception propagate to the broker-neighboring services where these exceptions are going to be properly mapped and localized.
 
 
-#### 2.3 Own Their Configurations
+### 2.3 Own Their Configurations
 Brokers are also required to handle their own configurations - they may have a dependency injection from a configuration object, to retrieve and setup the configurations for whichever external resource they are integrating with.
 
 For instance, connection strings in database communications are required to be retrieved and passed in to the database client to establish a successful connection, as follows:
@@ -88,7 +88,7 @@ For instance, connection strings in database communications are required to be r
     }
 ```
 
-#### 2.4 Natives from Primitives
+### 2.4 Natives from Primitives
 Brokers may construct an external model object based on primitive types passed from the broker-neighboring services.
 
 For instance, in e-mail notifications broker, input parameters for a `.Send(...)` function for instance require the basic input parameters such as the subject, content or the address for instance, here's an example:
@@ -104,7 +104,7 @@ For instance, in e-mail notifications broker, input parameters for a `.Send(...)
 The primitive input parameters will ensure there are no strong dependencies between the broker-neighboring services and the external models.
 Even in situations where the broker is simply a point of integration between your application and an external RESTful API, it's very highly recommended that you build your own native models to reflect the same JSON object sent or returned from the API instead of relying on nuget libraries, dlls or shared projects to achieve the same goal.
 
-#### 2.5 Naming Conventions
+### 2.5 Naming Conventions
 The contracts for the brokers shall remain as generic as possible to indicate the overall functionality of a broker, for instance we say `IStorageBroker` instead of `ISqlStorageBroker` to indicate a particular technology or infrastructure.
 
 But in case of concrete implementations of brokers, it all depends on how many brokers you have providing similar functionality, in case of having a single storage broker, it might be more convenient to to maintain the same name as the contract - in our case here a concrete implementation of `IStorageBroker` would be `StorageBroker`.
@@ -113,7 +113,7 @@ However, if your application supports multiple queues, storages or e-mail servic
 
 But if the concrete implementations target the same model and business value, then a diversion to the technology might be more befitting in this case, for instance in the case of an `IStorageBroker` two different concrete implementations would be `SqlStorageBroker` and `MongoStroageBroker` this case is very possible in situations where environment costs are reduced in lower than production infrastructure for instance.
 
-#### 2.6 Language
+### 2.6 Language
 Brokers speak the language of the technologies they support.
 For instnace, in a storage broker, we say `SelectById` to match the SQL `Select` statement and in a queue broker we say `Enqueue` to match the language.
 
@@ -149,10 +149,53 @@ For instance, if we have a storage broker that provides all CRUD operations for 
 
 The main purpose of this particular organization leveraging partial classes is to seperate the concern for each entity to even a finer level, which should make the maintainability of the software much higher.
 
-## 4. Common Brokers
+But brokers files and folders naming convention strictly focuses on the plurality of the entities they support and the singularity for the overall resource being supported.
+
+For instance, we say `IStorageBroker.Students.cs`. and we also say `IEmailBroker` or `IQueueBroker.Notifications.cs` - singular for the resource and plural entities.
+
+The same concept applies to the folders or namespaces containing these brokers.
+
+For instance, we say:
+
+```csharp
+namespace OtripleS.Web.Api.Brokers.Storage 
+{
+    ...
+}
+```
+
+And we say:
+```csharp
+namespace OtripleS.Web.Api.Brokers.Queue
+{
+    ...
+}
+```
+
+## 4. Broker Types
 In most of the applications built today, there are some common Brokers that are usually needed to get an enterprise application up and running - some of these Brokers are like Storage, Time, APIs, Logging and Queues.
 
 Some of these brokers interact with existing resources on the system such as time to allow broker-neighboring services to treat time as a dependency and control how a particular service would behave based on the value of time at any point in the past, present or the future.
+
+### 4.0 Entity Brokers
+Entity brokers are the brokers providing integration points with external resources that the system needs to fulfill a business requirements.
+
+For instance, entity brokers are brokers that integrate with storage, providing capabilities to store or retrieve records from a database.
+
+entity brokers are also like queue brokers, providing a point of integration to push messages to a queue for other services to consume and process to fulfill their business logic.
+
+Entity brokers can only be called by broker-neighboring services, simply because they require a level of validation that needs to be performed on the data they receive or provide before proceeding any further.
+
+### 4.1 Support Brokers
+Support brokers are general purpose brokers, they provide a functionality to support services but they have no charactristic that makes them different from one system or another.
+
+A good example of support brokers is the `DateTimeBroker` - a broker made specifically to abstract away the business layer strong dependency on the system date time.
+
+Time brokers don't really target any specific entity, and they are almost the same across many systems out there.
+
+Another example of support brokers is the `LoggingBroker` - they provide data to logging and monitoring systems to enable the system's engineers to visualize the overall flow of data across the system, and be notified in case any issues occur.
+
+Unlike Entity Brokers - support brokers may be called across the entire business layer, they may be called on foundation, processing, orchestration, coordination, management or aggregation services. that's because logging brokers are required as a supporting component in the system to provide all the capabilities needed for services to log their errors or calculate a date or any other supporting functionality.
 
 You can find real-world examples of brokers in the OtripleS project [here](https://github.com/hassanhabib/OtripleS/tree/master/OtripleS.Web.Api/Brokers).
 
