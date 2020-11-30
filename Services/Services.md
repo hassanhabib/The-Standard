@@ -57,3 +57,46 @@ Aggregators in general don't really care about the order in which they call the 
 
 We will discuss each and every type of these services in detail in the next chapters.
 
+### 0.2 Overall Rules
+There are several rules that govern the overall architecture and design of services in any system.
+
+These rules ensure the overall readability, maintainability, configurability of the system - in that particular order.
+
+#### 0.2.0 Do or Delegate
+Every service should either do the work or delegate the work but not both.
+
+For instance, a processing service should delegate the work of persisting data to a foundation service and not try to do that work by itself.
+
+#### 0.2.1 Two-Three (Florance Pattern)
+For Orchestrator services, their dependencies of services (not brokers) should be limited to 2 or 3 but not 1 and not 4.
+
+The dependency on one service denies the very definition of orchestration. that's because orchestration by definition is the combination between multiple different operations from different sources to achieve a higher order of business-logic.
+
+###### This pattern violates Florance Pattern
+<br/>
+<p align=center>
+    <img src="https://user-images.githubusercontent.com/1453985/100561648-4926c100-326e-11eb-9028-96bcd3eb0b1d.png">
+</p>
+<br />
+
+###### This pattern follows the symmetry of the Pattern
+<br />
+<p align=center>
+    <img src="https://user-images.githubusercontent.com/1453985/100561978-2a74fa00-326f-11eb-9d05-404eed3eaf5f.png">
+</p>
+<br />
+
+The Florance pattern also ensures the balance and symmetry of the overall architecture as well.
+
+For instance, you can't orchestrate between a foundation and a processing services, it causes a form of unbalance in your architecture, and an uneasy disturbance in trying to combine one unified statement with the language each service speaks based on their level and type.
+
+The only type of services that is allowed to violate this rule are the aggregators, where the combination and the order of services or their calls doesn't have any real impact.
+
+We will be discussing the Florance pattern a bit further in detail in the upcoming sections of The Standard.
+
+#### 0.2.2 Single Exposure Point
+API controllers, UI components or any other form of data exposore from the system should have one single point of contact with the business-logic layer.
+
+For instance, an API endpoint that offer endpoints for persisting and retrieving student data, should not have multiple integrations with multiple services, but rather one service that offers all of these features.
+
+Sometimes, a single orchestration, coordination or management service does that not offer everything related to a particular entity, in which case an aggregator service is necessary to combine all of these features into one service ready to be integrated with by an exposure technology.
