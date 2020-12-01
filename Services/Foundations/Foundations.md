@@ -30,7 +30,7 @@ The broker-neighboring services reside between your brokers and the rest of your
 ## 2. Characteristics
 Foundation or Broker-Neighboring services in general have very specific charactristics that stricly governs their development and integration.
 
-Foundation services in general focus more on validations than anything else - simply because that's their purpose, to ensure all incoming and outgoing data through the system is a good state for the system to process it saftely without any issues.
+Foundation services in general focus more on validations than anything else - simply because that's their purpose, to ensure all incoming and outgoing data through the system is in a good state for the system to process it saftely without any issues.
 
 Here's the charactristics and rules that govern broker-neighboring services:
 
@@ -64,3 +64,20 @@ This rule doesn't necessarily apply to support brokers like `DateTimeBroker` or 
 For instance, a `StudentService` may integrate with a `StorageBroker` as long as it only targets only the functionality offered by the partial class in the `StorageBroker.Students.cs` file.
 
 Foundation services should not integrate with more than one entity broker of any kind simply because it will increase the complexity of validation and orchestration which goes beyond the main purpose of the service which is just simply validation. we push this responsibility further to the orchestration-type services to handle it.
+
+### 2.2 Business Language
+Broker-neighboring services speak primitive business language for their operations.
+For instance, while a Broker may provide a method with the name `InsertStudentAsync` - the equivelant of that on the service layer would be `AddStudentAsync`.
+
+In general, most of the CRUD operations shall be converted from a storage lanaugage to a business language, and the same goes for non-storage operations such as Queues, for instance we say `PostQueueMessage` but on the business layer we shall say `EnqueueMessage`.
+
+Since the CRUD operations the most common ones in every system, our mapping to these CRUD operations would be as follows:
+
+| Brokers  	|   Services 	|
+|----------	|:-------------:|
+| Insert	|  	Add 		|
+| Select 	|   Retrieve   	|
+| Update 	|	Modify 		|
+| Delete 	| 	Remove 		|
+
+As we move forward towards higher-order business logic services, the language of the methods beings used will lean more towards a business language rather than a technology language as we will see in the upcoming sections.
