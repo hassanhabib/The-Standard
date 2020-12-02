@@ -68,7 +68,7 @@ Every service should either do the work or delegate the work but not both.
 For instance, a processing service should delegate the work of persisting data to a foundation service and not try to do that work by itself.
 
 #### 0.2.1 Two-Three (Florance Pattern)
-For Orchestrator services, their dependencies of services (not brokers) should be limited to 2 or 3 but not 1 and not 4.
+For Orchestrator services, their dependencies of services (not brokers) should be limited to 2 or 3 but not 1 and not 4 or more.
 
 The dependency on one service denies the very definition of orchestration. that's because orchestration by definition is the combination between multiple different operations from different sources to achieve a higher order of business-logic.
 
@@ -99,4 +99,17 @@ API controllers, UI components or any other form of data exposore from the syste
 
 For instance, an API endpoint that offer endpoints for persisting and retrieving student data, should not have multiple integrations with multiple services, but rather one service that offers all of these features.
 
-Sometimes, a single orchestration, coordination or management service does that not offer everything related to a particular entity, in which case an aggregator service is necessary to combine all of these features into one service ready to be integrated with by an exposure technology.
+Sometimes, a single orchestration, coordination or management service does not offer everything related to a particular entity, in which case an aggregator service is necessary to combine all of these features into one service ready to be integrated with by an exposure technology.
+
+#### 0.2.3 Same or Primitives I/O
+For all services, they have to maintain a single contract in terms of their return and input types, except if they were primitives.
+
+For instance, a service that provides any kind of operations for an entity type `Student` - should not return from any of it's methods any other entity type.
+
+You may return an aggregation of the same entity whether it's custom or native such as `List<Student>` or `AggregatedStudents` models, or a premitive type like getting students count, or a boolean indicating whether a student exists or not but not any other non-primitive or non-aggregating contract.
+
+For input parameters a similar rule applies - any service may receive an input parameter of the same contract or a virtual aggregation contract or a primitive type but not any other contract, that simply violates the rule.
+
+This rule enforces the focus of any service to maintain it's responsibility on a single entity and all it's related operations.
+
+Once a service returns a different contract, it simply violates it's own naming convention like a `StudentOrchestrationService` returning `List<Teacher>` - and it starts falling into the trap of being called by other services from a completely different data pipelines.
