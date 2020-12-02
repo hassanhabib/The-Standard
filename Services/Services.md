@@ -95,7 +95,7 @@ The only type of services that is allowed to violate this rule are the aggregato
 We will be discussing the Florance pattern a bit further in detail in the upcoming sections of The Standard.
 
 #### 0.2.2 Single Exposure Point
-API controllers, UI components or any other form of data exposore from the system should have one single point of contact with the business-logic layer.
+API controllers, UI components or any other form of data exposure from the system should have one single point of contact with the business-logic layer.
 
 For instance, an API endpoint that offer endpoints for persisting and retrieving student data, should not have multiple integrations with multiple services, but rather one service that offers all of these features.
 
