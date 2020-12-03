@@ -107,7 +107,7 @@ For instance, an API endpoint that offer endpoints for persisting and retrieving
 
 Sometimes, a single orchestration, coordination or management service does not offer everything related to a particular entity, in which case an aggregator service is necessary to combine all of these features into one service ready to be integrated with by an exposure technology.
 
-#### 0.2.3 Same or Primitives I/O
+#### 0.2.3 Same or Primitives I/O Model
 For all services, they have to maintain a single contract in terms of their return and input types, except if they were primitives.
 
 For instance, a service that provides any kind of operations for an entity type `Student` - should not return from any of it's methods any other entity type.
