@@ -119,3 +119,7 @@ For input parameters a similar rule applies - any service may receive an input p
 This rule enforces the focus of any service to maintain it's responsibility on a single entity and all it's related operations.
 
 Once a service returns a different contract, it simply violates it's own naming convention like a `StudentOrchestrationService` returning `List<Teacher>` - and it starts falling into the trap of being called by other services from a completely different data pipelines.
+
+For primitive input parameters, if they belong to a different entity model, that is not necessarily a reference on the main entity, it begs the question to orchestrate between two processing or foundation services to maintain a unified model without break the pure-contracting rule.
+
+If the combination between multiple different contracts in an orchestration service is required, then a new unified virtual model has to be the new unique contract for the orchestration service with mappings implemented underneath on the concrete level of that service to maintain compatibility and integration saftey.
