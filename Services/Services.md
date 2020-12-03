@@ -1,7 +1,11 @@
 # Services
 
 ## 0. Introduction
-Services in general are the containers of all the business logic in any given software.
+Services in general are the containers of all the business logic in any given software - they are the core component of any system and the main component that makes one system different from another.
+
+Our main goal with services is that to keep them completely agnostic from specific technologies or external dependencies.
+
+Any business layer is more compliant with The Standard if it can be plugged into any other dependencies and exposure technologies with the least amount of integration efforts possible.
 
 
 ### 0.0 Services Operations
@@ -12,6 +16,8 @@ When we say business logic, we mainly refer to three main categories of operatio
     <img src="https://user-images.githubusercontent.com/1453985/100530065-4494d680-31a2-11eb-8393-32b21ab99a3d.png" />
 </p>
 <br />
+
+Let's talk about these categories.
 
 #### 0.0.0 Validations 
 Validations focus on ensuring that the incoming or outgoing data match a particular set of rules, which can be structural, logical or dependency validations which we will go in details about in the upcoming sections.
