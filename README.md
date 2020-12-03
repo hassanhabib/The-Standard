@@ -33,7 +33,7 @@
       - [0.2.0 Do or Delegate](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#020-do-or-delegate)
       - [0.2.1 Two-Three (Florance Pattern)](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#021-two-three-florance-pattern)
       - [0.2.2 Single Exposure Point](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#022-single-exposure-point)
-      - [0.2.3 Same or primitives I/O](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#023-same-or-primitives-io)
+      - [0.2.3 Same or primitives I/O Model](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#023-same-or-primitives-io)
   - [Foundation Services](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md)
     - [0. Introduction](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#0-introduction)
     - [1. On The Map](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#1-on-the-map)
