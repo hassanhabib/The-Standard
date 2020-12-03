@@ -18,7 +18,7 @@
     - [4.1 Support Brokers](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#41-support-brokers)
   - [5. Implementation](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#5-implementation)
   - [6. Summary](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#6-summary)
-  - [6. FAQs](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#7-faqs)
+  - [7. FAQs](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#7-faqs)
 - [Services](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md)
   - [0. Introduction](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#0-introduction)
     - [0.0 Services Operations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Services.md#00-services-operations)
