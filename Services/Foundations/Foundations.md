@@ -85,3 +85,21 @@ Since the CRUD operations the most common ones in every system, our mapping to t
 | Delete 	| 	Remove 		|
 
 As we move forward towards higher-order business logic services, the language of the methods beings used will lean more towards a business language rather than a technology language as we will see in the upcoming sections.
+
+## 3. Responsibilities
+Broker-neighboring services play two very important roles in any system.
+The first and most important role is to offer a layer of validation on top of the existing primitive operations a broker already offers to ensure incoming and outgoing data is valid to be processed or persisted by the system.
+The second role is to play the role of a mapper of all other native models and contracts that may be needed to completed any given operation while interfacing with a broker.
+Foundation services are the last point of abstraction between the core business logic of any system and the rest of the world, let's discuss these roles in detail.
+
+### 3.0 Validation
+Broker-neighboring services are required to ensure incoming and outgoing data from and to the system are in a good state - they play the role of a gatekeeper between the system and the outside world from a communication, data persistance and all other dependency needs a given system may have.
+
+#### 3.0.0 Structural Validations
+Validations are three different layers. the first of these layers is the structural validations. to ensure certain properties on any given model or a primitive type are not in an invalid structual state.
+
+For instance, a property of type `String` should not be empty, `null` or white space. another example would be for an input parameter of an `int` type, it should not be at it's `default` state which is `0`.
+
+The structural validations ensure the data is in a good shape before moving forward with any further validations - for instance, we can't possible validate a student has the minimum number of characters in their names if their first name is structurally invalid.
+
+Structural validations play the role of identifying the *required* properties on any given model, and while a lot of technologies offer the validation annotations, plugins or libraries to globally enforce data validation rules, I choose to perform the validation programmatically and manually to gain more control of what would be required and what wouldn't in a TDD fashion.
