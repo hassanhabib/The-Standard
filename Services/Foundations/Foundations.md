@@ -103,3 +103,88 @@ For instance, a property of type `String` should not be empty, `null` or white s
 The structural validations ensure the data is in a good shape before moving forward with any further validations - for instance, we can't possible validate a student has the minimum number of characters in their names if their first name is structurally invalid.
 
 Structural validations play the role of identifying the *required* properties on any given model, and while a lot of technologies offer the validation annotations, plugins or libraries to globally enforce data validation rules, I choose to perform the validation programmatically and manually to gain more control of what would be required and what wouldn't in a TDD fashion.
+
+##### 3.0.0.0 Testing Structural Validations
+Because I truly believe in the importance of TDD, I am going to start showing the implementation of structural validations by writing a failing test for it first.
+
+Let's assume we have a student model, with the following details:
+
+```csharp
+public class Student 
+{
+	public Guid Id {get; set;}
+}
+```
+
+We want to validate that the student Id is not a structurally invalid Id - such as an empty `Guid` - therefore we would write a unit test in the following fashion:
+
+```csharp
+[Fact]
+public async void ShouldThrowValidationExceptionOnRegisterWhenIdIsInvalidAndLogItAsync()
+{
+	// given
+	Student randomStudent = CreateRandomStudent();
+	Student inputStudent = randomStudent;
+	inputStudent.Id = Guid.Empty;
+
+	var invalidStudentInputException = new InvalidStudentException(
+		parameterName: nameof(Student.Id),
+		parameterValue: inputStudent.Id);
+
+	var expectedStudentValidationException =
+		new StudentValidationException(invalidStudentInputException);
+
+	// when
+	ValueTask<Student> registerStudentTask =
+		this.studentService.RegisterStudentAsync(inputStudent);
+
+	// then
+	await Assert.ThrowsAsync<StudentValidationException>(() =>
+		registerStudentTask.AsTask());
+
+	this.loggingBrokerMock.Verify(broker =>
+		broker.LogError(It.Is(SameExceptionAs(expectedStudentValidationException))),
+			Times.Once);
+
+	this.storageBrokerMock.Verify(broker =>
+		broker.InsertStudentAsync(It.IsAny<Student>()),
+			Times.Never);
+
+	this.dateTimeBrokerMock.VerifyNoOtherCalls();
+	this.loggingBrokerMock.VerifyNoOtherCalls();
+	this.storageBrokerMock.VerifyNoOtherCalls();
+}
+```
+
+In the above test, we created a random student object then assigned the value of `Guid.Empty` to the `Id`.
+
+When the structural validation logic in our foundation service examines the `Id` property, it should throw an exception property describing the issue of validation in our student model. in this case we throw `InvalidStudentException`.
+
+The exception is required to briefly describe the whats, wheres and whys of the validation operation. in our case here the what would be the validation issue occurring, the where would be the Student service and the why would be the property value.
+
+Here's how an `InvalidStudentException` would look like:
+
+```csharp
+public class InvalidStudentException : Exception
+{
+	public InvalidStudentException(string parameterName, object parameterValue)
+		: base($"Invalid Student, " +
+				$"ParameterName: {parameterName}, " +
+				$"ParameterValue: {parameterValue}.")
+	{ }
+}
+```
+
+The above unit test however, requires our `InvalidStudentException` to wrapped up in a more generic system-level exception, which is `StudentValidationException` - these exceptions is what I call outer-exceptions, they encapsulate all the different situations of validations regardless of their category and communicates the error to upstream services or controllers so they can map that to the proper error code to the consumer of these services.
+
+Our `StudentValidationException` would be implemented as follows:
+
+```csharp
+public class StudentValidationException : Exception
+{
+	public StudentValidationException(Exception innerException)
+		: base("Invalid input, please check your input and then try again.", innerException) { }
+}
+```
+
+The message in the outer-validation above indicates that the issue is in the input, and therefore it requires the input submitter to try again as there are no actions required from the system side to be adjusted.
