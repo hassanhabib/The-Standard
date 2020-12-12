@@ -123,3 +123,60 @@ Once a service returns a different contract, it simply violates it's own naming 
 For primitive input parameters, if they belong to a different entity model, that is not necessarily a reference on the main entity, it begs the question to orchestrate between two processing or foundation services to maintain a unified model without break the pure-contracting rule.
 
 If the combination between multiple different contracts in an orchestration service is required, then a new unified virtual model has to be the new unique contract for the orchestration service with mappings implemented underneath on the concrete level of that service to maintain compatibility and integration saftey.
+
+#### 0.2.4 Every Service for Itself
+Every service is responsible for validating it's inputs and outputs. you should not rely on services up or downstream to validate your data.
+
+This is a defensive programming mechanism to ensure that in case of swapping implmentations behind contracts, the responsibility of any given services wouldn't be affected if down or upstream services decided to pass on their validations for any reason.
+
+Within any monolithic, microservice or serverless architecture-based system, every service is built with the intent that it would split off of the system at some point, and become the last point of contact before integrating with some external resource broker.
+
+For instance, in the following architecture, services are mapping parts of an input `Student` model into a `LibraryCard` model, here's a visual of the models:
+
+###### Student
+```csharp
+public class Student 
+{
+    public Guid Id {get; set;}
+    public string Name {get; set;}
+}
+```
+###### LibraryCard
+```csharp
+public class LibraryCard
+{
+    public Guid Id {get; set;}
+    public Guid StudentId {get; set;}
+}
+```
+
+Now, assume that our orchestrator service `StudentOrchestrationService` is ensuring every new student that gets registered will need to have a library card, so our logic may look as follows:
+
+```csharp
+public async ValueTask<Student> RegisterStudentAsync(Student student)
+{
+    Student registeredStudent = 
+        await this.studentProcessingService.RegisterStudentAsync(student);
+    
+    await AssignStudentLibraryCardAsync(student);
+
+    return registeredStudent;
+}
+
+private async ValueTask<LibraryCard> AssignStudentLibraryCardAsync(Student student)
+{
+    LibraryCard studentLibraryCard = MapToLibraryCard(student);
+    await this.libraryCardProcessingService.AddLibraryCard(studentLibraryCard);
+}
+
+private LibraryCard MapToLibraryCard(Student student)
+{
+    return new LibraryCard 
+    {
+        Id = Guid.NewGuid(),
+        StudentId = student.Id
+    };
+}
+```
+
+As you can see above, a valid student id is required to ensure a successful mapping to a `LibraryCard` - and since the mapping is the orchestrator's responsibility, we are required to ensure that the input student and it's id is in good shape before proceeding with the orchestration process.
