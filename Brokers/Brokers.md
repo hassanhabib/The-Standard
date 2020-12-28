@@ -158,7 +158,7 @@ The same concept applies to the folders or namespaces containing these brokers.
 For instance, we say:
 
 ```csharp
-namespace OtripleS.Web.Api.Brokers.Storage 
+namespace OtripleS.Web.Api.Brokers.Storages
 {
     ...
 }
@@ -166,7 +166,7 @@ namespace OtripleS.Web.Api.Brokers.Storage
 
 And we say:
 ```csharp
-namespace OtripleS.Web.Api.Brokers.Queue
+namespace OtripleS.Web.Api.Brokers.Queues
 {
     ...
 }

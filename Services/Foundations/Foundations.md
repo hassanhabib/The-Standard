@@ -175,7 +175,7 @@ public class InvalidStudentException : Exception
 }
 ```
 
-The above unit test however, requires our `InvalidStudentException` to wrapped up in a more generic system-level exception, which is `StudentValidationException` - these exceptions is what I call outer-exceptions, they encapsulate all the different situations of validations regardless of their category and communicates the error to upstream services or controllers so they can map that to the proper error code to the consumer of these services.
+The above unit test however, requires our `InvalidStudentException` to be wrapped up in a more generic system-level exception, which is `StudentValidationException` - these exceptions is what I call outer-exceptions, they encapsulate all the different situations of validations regardless of their category and communicates the error to upstream services or controllers so they can map that to the proper error code to the consumer of these services.
 
 Our `StudentValidationException` would be implemented as follows:
 
