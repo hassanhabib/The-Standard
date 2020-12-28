@@ -166,7 +166,7 @@ public async ValueTask<Student> RegisterStudentAsync(Student student)
 private async ValueTask<LibraryCard> AssignStudentLibraryCardAsync(Student student)
 {
     LibraryCard studentLibraryCard = MapToLibraryCard(student);
-    await this.libraryCardProcessingService.AddLibraryCard(studentLibraryCard);
+    await this.libraryCardProcessingService.AddLibraryCardAsync(studentLibraryCard);
 }
 
 private LibraryCard MapToLibraryCard(Student student)
