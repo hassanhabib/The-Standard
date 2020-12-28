@@ -93,7 +93,7 @@ The second role is to play the role of a mapper of all other native models and c
 Foundation services are the last point of abstraction between the core business logic of any system and the rest of the world, let's discuss these roles in detail.
 
 ### 3.0 Validation
-Broker-neighboring services are required to ensure incoming and outgoing data from and to the system are in a good state - they play the role of a gatekeeper between the system and the outside world from a communication, data persistance and all other dependency needs a given system may have.
+Foundation services are required to ensure incoming and outgoing data from and to the system are in a good state - they play the role of a gatekeeper between the system and the outside world to ensure the data that goes through is structurally, logically and externally valid before performing any further operations by upstream services.
 
 #### 3.0.0 Structural Validations
 Validations are three different layers. the first of these layers is the structural validations. to ensure certain properties on any given model or a primitive type are not in an invalid structual state.
