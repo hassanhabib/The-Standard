@@ -125,8 +125,7 @@ public async void ShouldThrowValidationExceptionOnRegisterWhenIdIsInvalidAndLogI
 	// given
 	Student randomStudent = CreateRandomStudent();
 	Student inputStudent = randomStudent;
-	Guid invalidStudentId = Guid.Empty;
-	inputStudent.Id = invalidStudentId;
+	inputStudent.Id = Guid.Empty;
 
 	var invalidStudentException = new InvalidStudentException(
 		parameterName: nameof(Student.Id),
@@ -157,7 +156,7 @@ public async void ShouldThrowValidationExceptionOnRegisterWhenIdIsInvalidAndLogI
 }
 ```
 
-In the above test, we created a random student object then assigned the value of `Guid.Empty` to the `Id`.
+In the above test, we created a random student object then assigned the an invalid Id value of `Guid.Empty` to the student `Id`.
 
 When the structural validation logic in our foundation service examines the `Id` property, it should throw an exception property describing the issue of validation in our student model. in this case we throw `InvalidStudentException`.
 
@@ -189,3 +188,87 @@ public class StudentValidationException : Exception
 ```
 
 The message in the outer-validation above indicates that the issue is in the input, and therefore it requires the input submitter to try again as there are no actions required from the system side to be adjusted.
+
+##### 3.0.0.1 Implementing Structural Validations
+Now, let's look at the other side of the validation process, which is the implementation.
+Structural validations always come before each and every other type of validations. That's simply because structural validations are the cheapest from an execution and asymptotic time perspective. 
+For instance, It's much cheaper to validation an `Id` is invalid structurally, than sending an API call across to get the exact same answer plus the cost of latency. this all adds up when multi-million requests per second start flowing in.
+Structural and logical validations in general live in their own partial class to run these validations, for instance, if our service is called `StudentService.cs` then a new file should be created with the name `StudentService.Validations.cs` to encapsulate and visually abstracts away the validation rules to ensure clean data are coming in and going out.
+Here's how an Id validation would look like:
+
+###### StudentService.Validations.cs
+
+```csharp
+
+private void ValidateStudent(Student student)
+{
+	switch(student)
+	{
+		case {} when IsInvalid(student.Id):
+			throw new InvalidStudentException(
+				parameterName: nameof(Student.Id),
+				parameterValue: student.Id);
+	}
+}
+	
+private static bool IsInvalid(Guid id) => id == Guid.Empty;
+```
+
+We have implemented a method to validate the entire student object, with a compilation of all the rules we need to setup to validate structurally and logically the student input object. The most important part to notice about the above code snippet is to ensure the encapsulation of any finer details further away from the main goal of a particular method.
+
+That's the reason why we decided to implement a private static method `IsInvalid` to abstract away the details of what determines a property of type `Guid` is invalid or not. And as we move further in the implementation, we are going to have to implement multiple overloads of the same method to validate other value types structurally and logically.
+
+The purpose of the `ValidateStudent` method is to simply set up the rules and take an action by throwing an exception if any of these rules are violated. there's always an opportunity to aggregated the violation errors rather than throwing too early at the first sign of structural or logically validation issue to be detected.
+
+Now, with the implementation above, we need to call that method to structurally and logically validate our input. let's make that call in our `RegisterStudentAsync` method as follows:
+
+###### StudentService.cs
+```csharp
+public ValueTask<Student> RegisterStudentAsync(Student student) =>
+TryCatch(async () =>
+{
+	ValidateStudent(student);
+
+	return await this.storageBroker.InsertStudentAsync(student);
+});
+```
+
+At a glance, you will notice that our method here doesn't necessarily handle any type of exceptions at the logic level. that's because all the exception noise is also abstracted away in a method called `TryCatch`.
+
+`TryCatch` is a concept I invented to allow engineers to focus on what matters that most based on which aspect of the servie that are looking at without having to take any shortcuts with the exception handling to make the code a bit more readable.
+
+`TryCatch` methods in general live in another partial class, and an entirely new file called `StudentService.Exceptions.cs` - which is where all exception handling and error reporting happens as I will show you in the following example.
+
+Let's take a look at what a `TryCatch` method looks like:
+
+###### StudentService.Exceptions.cs
+```csharp
+private delegate ValueTask<Student> ReturningStudentFunction();
+
+private async ValueTask<Student> TryCatch(ReturningStudentFunction returningStudentFunction)
+{
+	try
+	{
+		return await returningStudentFunction();
+	}
+	catch (InvalidStudentException invalidStudentInputException)
+	{
+		throw CreateAndLogValidationException(invalidStudentInputException);
+	}
+}
+
+private StudentValidationException CreateAndLogValidationException(Exception exception)
+{
+	var studentValidationException = new StudentValidationException(exception);
+	this.loggingBroker.LogError(studentValidationException);
+
+	return studentValidationException;
+}
+```
+
+The `TryCatch` exception noise-cancellation pattern beautifully takes in any function that returns a particular type as a delegate and handles any thrown exceptions off of that function or it's dependencies.
+
+The main responsibility of a `TryCatch` function is to wrap up a service inner exceptions with outer exceptions to ease-up the reaction of external consumers of that service into only one of the three categories, which are Service Excetpions, Validations Excetpions and Dependency Excetpions. there are sub-types to these excetpions such as Dependency Validation Excetpions but these usually fall under the Validation Excetpion category as we will discuss in upcoming sections of The Standard.
+
+In a `TryCatch` method, we can add as many inner and external excetpions as we want and map them into local exceptions for upstream services not to have a strong dependency on any particular libraries or external resource models, which we will talk about in detail when we move on to the Mapping responsibility of broker-neighboring (foundation) services.
+ 
