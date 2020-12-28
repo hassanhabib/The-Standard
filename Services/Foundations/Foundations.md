@@ -125,14 +125,15 @@ public async void ShouldThrowValidationExceptionOnRegisterWhenIdIsInvalidAndLogI
 	// given
 	Student randomStudent = CreateRandomStudent();
 	Student inputStudent = randomStudent;
-	inputStudent.Id = Guid.Empty;
+	Guid invalidStudentId = Guid.Empty;
+	inputStudent.Id = invalidStudentId;
 
-	var invalidStudentInputException = new InvalidStudentException(
+	var invalidStudentException = new InvalidStudentException(
 		parameterName: nameof(Student.Id),
 		parameterValue: inputStudent.Id);
 
 	var expectedStudentValidationException =
-		new StudentValidationException(invalidStudentInputException);
+		new StudentValidationException(invalidStudentException);
 
 	// when
 	ValueTask<Student> registerStudentTask =
