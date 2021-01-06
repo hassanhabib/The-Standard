@@ -51,7 +51,7 @@ TryCatch(async () =>
 {
 	ValidateStudent(student);
 
-	return this.storageBroker.InsertStudentAsync(student);
+	return await this.storageBroker.InsertStudentAsync(student);
 });
 ```
 
