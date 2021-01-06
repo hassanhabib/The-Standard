@@ -47,6 +47,6 @@
         - [3.0.0 Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#300-structural-validations)
           - [3.0.0.0 Testing Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3000-testing-structural-validations)
           - [3.0.0.1 Implementing Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3001-implementing-structural-validations)
-        - [3.0.0.1 Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#301-logical-validations)
+        - [3.0.1 Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#301-logical-validations)
           - [3.0.1.0 Testing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3010-testing-logical-validations)
           - [3.0.1.1 Implementing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3011-implementing-logical-validations)
