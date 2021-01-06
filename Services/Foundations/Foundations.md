@@ -352,8 +352,7 @@ private void ValidateStudent(Student student)
 	}
 }
 	
-private static bool IsNotSame(Guid firstId, Guid secondId) => 
-	firstId != secondId;
+private static bool IsNotSame(Guid firstId, Guid secondId) => firstId != secondId;
 ```
 
 Everything else in both `StudentService.cs` and `StudentService.Exceptions.cs` continues to be exactly the same as we've done above in the structural validations.
