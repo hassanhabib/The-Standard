@@ -16,7 +16,7 @@ public async ValueTask<Student> AddStudentAsync(Student student)
 {
 	ValidateStudent(student);
 
-	return this.storageBroker.InsertStudentAsync(student);
+	return await this.storageBroker.InsertStudentAsync(student);
 }
 ```
 
