@@ -271,4 +271,91 @@ The `TryCatch` exception noise-cancellation pattern beautifully takes in any fun
 The main responsibility of a `TryCatch` function is to wrap up a service inner exceptions with outer exceptions to ease-up the reaction of external consumers of that service into only one of the three categories, which are Service Excetpions, Validations Excetpions and Dependency Excetpions. there are sub-types to these excetpions such as Dependency Validation Excetpions but these usually fall under the Validation Excetpion category as we will discuss in upcoming sections of The Standard.
 
 In a `TryCatch` method, we can add as many inner and external excetpions as we want and map them into local exceptions for upstream services not to have a strong dependency on any particular libraries or external resource models, which we will talk about in detail when we move on to the Mapping responsibility of broker-neighboring (foundation) services.
- 
+
+#### 3.0.1 Logical Validations
+Logical validation are the second in order to structural validations. their main responsibility by definition is to logically validate whether a structurally valid piece of data is logically valid.
+For instance, a date of birth for a student could be structurally valid by having a value of `1/1/1800` but logically, a student that is over 200 years of age is an impposibility.
+
+The most common logical validations are validations for audit fields such as `CreatedBy` and `UpdatedBy` - it's logically impossible that a new record can be inserted with two different values for the authors of that new record - simply because data can only be inserted by one person at a time.
+
+Let's talk about how we can test-drive and implement logical validations:
+
+##### 3.0.1.0 Testing Logical Validations
+In the common case of testing logical validations for audit fields, we want to throw a validation exception that the `UpdatedBy` value is invalid simply because it doesn't match the `CreatedBy` field.
+
+Let's assume our Student model looks as follows:
+```csharp
+public class Student {
+	Guid CreatedBy {get; set;}
+	Guid UpdatedBy {get; set;}
+}
+```
+
+Our test to validate these values logically would be as follows:
+
+ ```csharp
+[Fact]
+public async Task ShouldThrowValidationExceptionOnRegisterIfUpdatedByNotSameAsCreatedByAndLogItAsync()
+{
+	// given
+	Student randomStudent = CreateRandomStudent();
+	Student inputStudent = randomStudent;
+	inputStudent.UpdatedBy = Guid.NewGuid();
+
+	var invalidStudentException = new InvalidStudentException(
+		parameterName: nameof(Student.UpdatedBy),
+		parameterValue: inputStudent.UpdatedBy);
+
+	var expectedStudentValidationException =
+		new StudentValidationException(invalidStudentException);
+
+	// when
+	ValueTask<Student> registerStudentTask =
+		this.studentService.RegisterStudentAsync(inputStudent);
+
+	// then
+	await Assert.ThrowsAsync<StudentValidationException>(() =>
+		registerStudentTask.AsTask());
+
+	this.loggingBrokerMock.Verify(broker =>
+		broker.LogError(It.Is(
+			SameExceptionAs(expectedStudentValidationException))),
+				Times.Once);
+
+	this.storageBrokerMock.Verify(broker =>
+		broker.InsertStudentAsync(It.IsAny<Student>()),
+			Times.Never);
+
+	this.loggingBrokerMock.VerifyNoOtherCalls();
+	this.dateTimeBrokerMock.VerifyNoOtherCalls();
+	this.storageBrokerMock.VerifyNoOtherCalls();
+}
+ ```
+
+ In the above test, we have changed the value of the `UpdatedBy` field to ensure it completely differs from the `CreatedBy` field - now we expect an `InvalidStudentException` with the `CreatedBy` to be the reason for this validation exception to occur.
+
+ Let's go ahead an write an implementation for this failing test.
+
+ ##### 3.0.1.1 Implementing Logical Validations
+ Just like we did in the structural validations section, we are going to add more rules to our validation `switch case` as follows:
+
+ ###### StudentService.Validations.cs
+```csharp
+private void ValidateStudent(Student student)
+{
+	switch(student)
+	{
+		case {} when IsNotSame(student.CreatedBy, student.UpdatedBy):
+			throw new InvalidStudentException(
+				parameterName: nameof(Student.UpdatedBy),
+				parameterValue: student.UpdatedBy);
+	}
+}
+	
+private static bool IsNotSame(Guid firstId, Guid secondId) => 
+	firstId != secondId;
+```
+
+Everything else in both `StudentService.cs` and `StudentService.Exceptions.cs` continues to be exactly the same as we've done above in the structural validations.
+
+Logical validations, just like any other exceptions that may occur are usually non-critical. However, it all depends on your business case to determine whether a particular logical, structural or even a dependency validation are critical or not, this is when you might need to create a special class of exceptions, something like `InvalidStudentCriticalException` then log it accordingly.
