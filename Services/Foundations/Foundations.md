@@ -273,7 +273,7 @@ The main responsibility of a `TryCatch` function is to wrap up a service inner e
 In a `TryCatch` method, we can add as many inner and external excetpions as we want and map them into local exceptions for upstream services not to have a strong dependency on any particular libraries or external resource models, which we will talk about in detail when we move on to the Mapping responsibility of broker-neighboring (foundation) services.
 
 #### 3.0.1 Logical Validations
-Logical validation are the second in order to structural validations. their main responsibility by definition is to logically validate whether a structurally valid piece of data is logically valid.
+Logical validations are the second in order to structural validations. their main responsibility by definition is to logically validate whether a structurally valid piece of data is logically valid.
 For instance, a date of birth for a student could be structurally valid by having a value of `1/1/1800` but logically, a student that is over 200 years of age is an impposibility.
 
 The most common logical validations are validations for audit fields such as `CreatedBy` and `UpdatedBy` - it's logically impossible that a new record can be inserted with two different values for the authors of that new record - simply because data can only be inserted by one person at a time.
