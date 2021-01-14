@@ -50,3 +50,6 @@
         - [3.0.1 Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#301-logical-validations)
           - [3.0.1.0 Testing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3010-testing-logical-validations)
           - [3.0.1.1 Implementing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3011-implementing-logical-validations)
+        - [3.0.2 Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#302-dependency-validations)
+          - [3.0.2.0 Testing Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3020-testing-dependency-validations)
+          - [3.0.2.1 Implementing Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3021-implementing-dependency-validations)
