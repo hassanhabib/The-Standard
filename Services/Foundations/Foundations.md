@@ -358,3 +358,150 @@ private static bool IsNotSame(Guid firstId, Guid secondId) => firstId != secondI
 Everything else in both `StudentService.cs` and `StudentService.Exceptions.cs` continues to be exactly the same as we've done above in the structural validations.
 
 Logical validations exceptions, just like any other exceptions that may occur are usually non-critical. However, it all depends on your business case to determine whether a particular logical, structural or even a dependency validation are critical or not, this is when you might need to create a special class of exceptions, something like `InvalidStudentCriticalException` then log it accordingly.
+
+#### 3.0.2 Dependency Validations
+The last type of validations that are usually performed by foundation services is dependency validations. I define dependency validations as any form of validation that requires calling an external resource to validate whether a foundation service should proceed with processing incoming data or halt with an exception.
+
+A good example of dependency validations is when we call a broker to retrieve a particular entity by it's id. If the entity returned is not found, or the API broker returns a `NotFound` error - the foundation service is then required to wrap that error in a `DependencyValidationException` and halts all following processes.
+
+Dependency validations can occur because you called an external resources and it returned an error, or returned a value that warrants raising an error. For instance, an API call might return a `404` code, and that's interpreted as an exception if the input was supposed to correspond to an existing object. 
+
+But dependency validation exception can also occur if the returned value even if it was a successful call did not match the expectation, such as an empty list returned from an API call when trying to insert a new coach of a team - if there is no team, there can be no coach for instance. The foundation service in this case will be required to raise a local exception to explain the issue, something like `NoTeamMembersFoundException` or something of that nature.
+
+A more common example is when a particular input entity is using the same id as an existing entity in the system. In a relational database world, a duplicate key exception would be thrown. In a RESTful API scneario, programmatically applying the same concept also achieves the same goal for API validations assuming the granularity of the system being called weaken the referencial integrity of the overall system data.
+
+There are situations where the faulty response can be expressed in a fashion other than exceptions, but we shall touch on that topic in a more advanced chapters of this Standard.
+
+Let's write a failing test to verify whether we are throwing a `DependencyValidationException` if `Student` model already existes in the storage with the storage broker throwing a `DuplicateKeyException` as a native result of the operation.
+
+##### 3.0.2.0 Testing Dependency Validations
+Let's assume our student model uses an `Id` with the type `Guid` as follows:
+
+```csharp
+public class Student 
+{
+	public Guid Id {get; set;}
+	public string Name {get; set;}
+}
+```
+
+our unit test to validate a `DependencyValidation` exception would be thrown in a `DuplicateKey` situation would be as follows:
+
+```csharp
+[Fact]
+public async void ShouldThrowDependencyValidationExceptionOnRegisterIfStudentAlreadyExistsAndLogItAsync()
+{
+	// given
+	Student randomStudent = CreateRandomStudent();
+	Student alreadyExistsStudent = randomStudent;
+	string randomMessage = GetRandomMessage();
+	string exceptionMessage = randomMessage;
+	var duplicateKeyException = new DuplicateKeyException(exceptionMessage);
+
+	var alreadyExistsStudentException =
+		new AlreadyExistsStudentException(duplicateKeyException);
+
+	var expectedStudentValidationException =
+		new StudentDependencyValidationException(alreadyExistsStudentException);
+
+	this.storageBrokerMock.Setup(broker =>
+		broker.InsertStudentAsync(alreadyExistsStudent))
+			.ThrowsAsync(duplicateKeyException);
+
+	// when
+	ValueTask<Student> registerStudentTask =
+		this.studentService.RegisterStudentAsync(alreadyExistsStudent);
+
+	// then
+	await Assert.ThrowsAsync<StudentValidationException>(() =>
+		registerStudentTask.AsTask());
+
+	this.storageBrokerMock.Verify(broker =>
+		broker.InsertStudentAsync(alreadyExistsStudent),
+			Times.Once);
+
+	this.loggingBrokerMock.Verify(broker =>
+		broker.LogError(It.Is(
+			SameExceptionAs(expectedStudentValidationException))),
+				Times.Once);
+
+	this.storageBrokerMock.VerifyNoOtherCalls();
+	this.loggingBrokerMock.VerifyNoOtherCalls();
+}
+```
+
+In the above test, we validate that we wrap a native `DuplicateKeyException` in a local model tailored to the specific model case which is the `AlreadyExcistsStudentException` in our example here. then we wrap that again with a generic category exception model which is the `StudentDependencyValidationException`.
+
+There's a couple of rules that govern the construction of dependency validations, which are as follows:
+
+- Rule 1: If a dependency validation is handling another dependency validation from a downstream service, then the inner exception of the downstream exception should be the same for the dependency validation at the current level.
+
+In other words, if some `StudentService` is throwing a `StudentDepdendencyValidationException` to an upstream service such as `StudentProcessingService` - then it's important that the `StudentProcessingDependencyValidationException` contain the same inner exception as the `StudentDependencyValidationException`. That's because once these exception are mapped into exposure components, such as API controller or UI components, the original validation message needs to propagate through the system and be presented to the end user no matter where it originated from.
+
+Additionally, maintaining the original inner exception guarantees the ability to communicate different error messages through API endpoints. For instnace, `AlreadyExistsStudentException` can be communicated as `Conflict` or `409` on an API controller level - this differs from another dependency validation exception such as `InvalidStudentReferenceException` which would be communicated as `FailedDependency` error or `424`.
+
+- Rule 2: If a dependency validation exception is handling a non-dependency validation exception it should take that exception as it's inner exception and no anything else.
+
+This rules ensures that only the local validation exception is what's being propagated not it's native exception from a storage system or an API or any other external dependency.
+
+Which is the case that we have here with our `AlreadyExistsStudentException` and it's `StudentDependencyValidationException` - the native exception is completely hidden away from sight, and the mapping of that native exception and it's inner message is what's being communicated to the end user. This gives the engineers the power to control what's being communicated from the other end of their system instead of letting the native message (which is subject to change) propagate to the end-users.
+
+##### 3.0.2.1 Implementing Dependency Validations
+Depending on where the validation error originates from, the implementation of dependency validations may or may not contain any business logic. As we previously mentioned, if the error is originating from the external resource (which is the case here) - then all we have to do is just wrap that error in a local exception then categorize it with an external exception under dependency validation.
+
+To ensure the aforementioned test passed, we are going to need few models.
+For the `AlreadyExistsStudentException` the implementation would be as follows:
+
+```csharp
+public class AlreadyExistsStudentException : Exception
+{
+	public AlreadyExistsStudentException(Exception innerException)
+		: base($"Student with the same Id already exists", innerException){ }
+}
+```
+
+We also need the `StudentDependencyValidationException` which should be as follows:
+
+```csharp
+public class StudentDependencyValidationException : Exception
+{
+	public StudentDependencyValidationException(Exception innerException)
+		: base($"Student dependency validation error occurred, please try again.", innerException){ }
+}
+
+```
+
+Now, let's go to the implementation side, let's start with the exception handling logic:
+
+###### StudentService.Exceptions.cs
+```csharp
+private delegate ValueTask<Student> ReturningStudentFunction();
+
+private async ValueTask<Student> TryCatch(ReturningStudentFunction returningStudentFunction)
+{
+	try
+	{
+		return await returningStudentFunction();
+	}
+	...
+	catch (DuplicateKeyException duplicateKeyException)
+	{
+		var alreadyExistsStudentException = new AlreadyExistsStudentException(duplicateKeyException);
+		throw CreateAndLogDependencyValidationException(alreadyExistsStudentException);
+	}
+}
+
+...
+
+private StudentDependencyValidationException CreateAndLogDependencyValidationException(Exception exception)
+{
+	var studentDependencyValidationException = new StudentDependencyValidationException(exception);
+	this.loggingBroker.LogError(studentDependencyValidationException);
+
+	return studentDependencyValidationException;
+}
+```
+
+We created the local inner exception in the catch block of our exception handling process to allow the reusability of our dependency validation exception method for other situations that require that same level of external exceptions.
+
+Everything else stays the same for the referecing of the `TryCatch` method in the `StudentService.cs` file.
