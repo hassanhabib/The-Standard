@@ -440,7 +440,7 @@ In other words, if some `StudentService` is throwing a `StudentDepdendencyValida
 
 Additionally, maintaining the original inner exception guarantees the ability to communicate different error messages through API endpoints. For instnace, `AlreadyExistsStudentException` can be communicated as `Conflict` or `409` on an API controller level - this differs from another dependency validation exception such as `InvalidStudentReferenceException` which would be communicated as `FailedDependency` error or `424`.
 
-- Rule 2: If a dependency validation exception is handling a non-dependency validation exception it should take that exception as it's inner exception and no anything else.
+- Rule 2: If a dependency validation exception is handling a non-dependency validation exception it should take that exception as it's inner exception and not anything else.
 
 This rules ensures that only the local validation exception is what's being propagated not it's native exception from a storage system or an API or any other external dependency.
 
