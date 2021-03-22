@@ -25,14 +25,14 @@ This makes broker-neighboring services nothing more than an extra layer of valid
 ## 1. On The Map
 The broker-neighboring services reside between your brokers and the rest of your application, on the left side higher-order business logic processing services, orchestration, coordination, aggregation or management servies may live, or just simply a controller, a UI component or any other data exposure technology.
 
-<br />
-<p align=center>
-	<img src="https://user-images.githubusercontent.com/1453985/100716772-00eec800-336e-11eb-9064-8bfe2f8e3be2.png" />
-</p>
+<br/>
+	<p align=center>
+		<img src="https://user-images.githubusercontent.com/1453985/100716772-00eec800-336e-11eb-9064-8bfe2f8e3be2.png" />
+	</p>
 <br/>
 
 ## 2. Characteristics
-Foundation or Broker-Neighboring services in general have very specific charactristics that stricly governs their development and integration.
+Foundation or Broker-Neighboring services in general have very specific charactristics that stricly govern their development and integration.
 
 Foundation services in general focus more on validations than anything else - simply because that's their purpose, to ensure all incoming and outgoing data through the system is in a good state for the system to process it saftely without any issues.
 
