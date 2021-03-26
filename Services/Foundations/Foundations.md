@@ -505,3 +505,18 @@ private StudentDependencyValidationException CreateAndLogDependencyValidationExc
 We created the local inner exception in the catch block of our exception handling process to allow the reusability of our dependency validation exception method for other situations that require that same level of external exceptions.
 
 Everything else stays the same for the referecing of the `TryCatch` method in the `StudentService.cs` file.
+
+
+###### Common Scenarios: 
+
+| Exception								|   Wrap Inner Exception With		| Wrap With								| Log Level |
+|------------------------				|---------------------------		| ---------------------------			| --------- |
+| NullStudentException					| - 								| StudentValidationException			| Error		|
+| InvalidStudentException				| - 								| StudentValidationException			| Error		|
+| SqlException							| - 								| StudentDependencyException			| Critical  |
+| NotFoundStudentException				| - 								| StudentValidationException			| Error		|
+| DuplicateKeyException					| AlreadyExistsStudentException	    | StudentDependencyValidationException	| Error		|
+| ForeignKeyConstraintConflictException | InvalidStudnetReferenceException	| StudentDependencyValidationException	| Error		|
+| DbUpdateConcurrencyException			| LockedStudentException			| StudentDependencyValidationException	| Error		|
+| DbUpdateException						| -									| StudentDependencyException			| Error		|
+| Exception								| -									| StudentServiceException				| Error		|
