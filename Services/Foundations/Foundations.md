@@ -392,8 +392,7 @@ our unit test to validate a `DependencyValidation` exception would be thrown in 
 public async void ShouldThrowDependencyValidationExceptionOnRegisterIfStudentAlreadyExistsAndLogItAsync()
 {
 	// given
-	Student randomStudent = CreateRandomStudent();
-	Student alreadyExistsStudent = randomStudent;
+	Student someStudent = CreateRandomStudent();
 	string randomMessage = GetRandomMessage();
 	string exceptionMessage = randomMessage;
 	var duplicateKeyException = new DuplicateKeyException(exceptionMessage);
@@ -405,19 +404,19 @@ public async void ShouldThrowDependencyValidationExceptionOnRegisterIfStudentAlr
 		new StudentDependencyValidationException(alreadyExistsStudentException);
 
 	this.storageBrokerMock.Setup(broker =>
-		broker.InsertStudentAsync(alreadyExistsStudent))
+		broker.InsertStudentAsync(It.IsAny<Student>()))
 			.ThrowsAsync(duplicateKeyException);
 
 	// when
 	ValueTask<Student> registerStudentTask =
-		this.studentService.RegisterStudentAsync(alreadyExistsStudent);
+		this.studentService.RegisterStudentAsync(someStudent);
 
 	// then
 	await Assert.ThrowsAsync<StudentValidationException>(() =>
 		registerStudentTask.AsTask());
 
 	this.storageBrokerMock.Verify(broker =>
-		broker.InsertStudentAsync(alreadyExistsStudent),
+		broker.InsertStudentAsync(It.IsAny<Student>()),
 			Times.Once);
 
 	this.loggingBrokerMock.Verify(broker =>
@@ -507,6 +506,54 @@ We created the local inner exception in the catch block of our exception handlin
 Everything else stays the same for the referecing of the `TryCatch` method in the `StudentService.cs` file.
 
 
+
+### 3.1 Mapping
+The second responsibility for a foundation service is to play the role of a mapper both ways between local models and non-local models. For instance, if you are leveraging an email service that provides it's own SDKs to integrate with, and your brokers are already wrapping and exposing the APIs for that service. your foundation service is required to map the inputs and outputs of the broker methods into local models. the same situation and more commonly between native non-local exceptions such as the ones we mentioned above with the dependency validation situation, the same aspect applies to just dependency errors or service errors as we will discuss shortly.
+
+#### 3.1.0 Non-Local Models
+Its very common for modern applications to require integration at some point with external services. these services can be local to the overall architecture or distributed system where the application lives, or it can be a 3rd party provider such as some of the popular email services for instance.
+External services providers invest a lot of effort in developing fluent APIs, SDKs and libraries in every common programming language to make it easy for the engineers to integrate their applications with that 3rd party service. For instance, let's assume a third party email service provider is offering the following API through their SDKs:
+
+```csharp
+public interface IEmailServiceProvider 
+{
+	ValueTask<EmailMessage> SendEmailAsync(EmailMessage message);
+}
+```
+
+Let's consider the model `EmailMessage` is a native model, it comes with the email service provider SDK. your brokers might offer a wrapper around this API by building a contract to abstract away the _functionality_ but can't do much with the native models that are passed in or returned out of these functionality. therefore our brokers interface would look something like this:
+
+```csharp
+public interface IEmailBroker
+{
+	ValueTask<EmailMessage> SendEmailMessageAsync(EmailMessage message);
+}
+```
+
+Then the implementation would something like this:
+
+```csharp
+public class EmailBroker : IEmailBroker
+{
+	public async ValueTask<EmailMessage> SendEmailMessageAsync(EmailMessage message) =>
+		await this.emailServiceProvider.SendEmailAsync(message);
+}
+```
+As we said before, the brokers here have done their part of abstraction by pushing away the actual implementation and the dependencies of the native `EmailServiceProvider` away from our foundation serviecs. But that's only 50% of the job, the abstraction isn't quite fully complete yet until there are no tracks of the native `EmailMessage` model. This is where the foundation services come in to do a test-driven operation of mapping between the native non-local models and your application's local models. therefore its very possible to see a mapping function in a foundation service to abstract away the native model from the rest of your business layer services.
+
+Your foundation service then will be required to support a new local model, let's call it `Email`. your local model's property may be identical to the external model `EmailMessage` - especially on a primitive data type level. But the new model would be the one and only contract between your pure business logic layer (processing, orchestration, coordination and management services) and your hybrid logic layer like the foundation services. Here's a code snippet for this operation:
+
+```csharp
+public async ValueTask<Email> SendEmailMessageAsync(Email email)
+{
+	EmailMessage inputEmailMessage = MapToEmailMessage(email);
+	EmailMessage sentEmailMessage = await this.emailBroker.SendEmailMessageAsync(inputEmailMessage);
+
+	return MapToEmail(sentEmailMessage);
+}
+
+```
+Depending on whether the returned message has a status or you would like to return the input message as a sign of a successful operation, both practices are valid in my Standard. It all depends on what makes more sense to the operation you are trying to execute. the code snippet above is an ideal scenario where your code will try to stay true to the value passed in as well as the value returned with all the necessary mapping included.
 
 
 Here's some common scenarios for mapping native or inner local exceptions to outer exceptions:
