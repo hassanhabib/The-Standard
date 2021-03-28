@@ -507,7 +507,9 @@ We created the local inner exception in the catch block of our exception handlin
 Everything else stays the same for the referecing of the `TryCatch` method in the `StudentService.cs` file.
 
 
-###### Common Scenarios: 
+
+
+Here's some common scenarios for mapping native or inner local exceptions to outer exceptions:
 
 | Exception								|   Wrap Inner Exception With		| Wrap With								| Log Level |
 |------------------------				|---------------------------		| ---------------------------			| --------- |
