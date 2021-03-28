@@ -53,6 +53,8 @@
         - [3.0.2 Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#302-dependency-validations)
           - [3.0.2.0 Testing Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3020-testing-dependency-validations)
           - [3.0.2.1 Implementing Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#3021-implementing-dependency-validations)
+      - [3.1 Mapping](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#31-mapping)
+        - [3.1.0 Non-Local Models](https://github.com/hassanhabib/The-Standard/blob/master/Services/Foundations/Foundations.md#310-non-local-models)
   - [Processing Services](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md)
     - [0. Introduction](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#0-introduction)
     - [1. On The Map](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#1-on-the-map)
