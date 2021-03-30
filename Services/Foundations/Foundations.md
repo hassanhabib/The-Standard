@@ -555,6 +555,18 @@ public async ValueTask<Email> SendEmailMessageAsync(Email email)
 ```
 Depending on whether the returned message has a status or you would like to return the input message as a sign of a successful operation, both practices are valid in my Standard. It all depends on what makes more sense to the operation you are trying to execute. the code snippet above is an ideal scenario where your code will try to stay true to the value passed in as well as the value returned with all the necessary mapping included.
 
+#### 3.1.1 Exceptions Mappings
+Just like the non-local models, exceptions that are either produced by the external API like the EntityFramework models `DbUpdateException` or any other has to be mapped into local exception models.
+Handling these non-local exceptions that early before entering the pure-business layer components will prevent any potential tight coupling or dependency on any external model. as it may be very common, that exceptions can be handled differently based on the type of exception and how we want to deal with it internally in the system.
+For instance, if we are trying to handle a `UserNotFoundException` being thrown from using Microsoft Graph for instance, we might not necessarily want to exist the entire procedure. we might want to continue by adding a user in some other storage for future Graph submittal processing.
+External APIs should not influence whether your internal operation should halt or not. and therefore handling exceptions on the Foundation layer is the guarantee that this influence is limited within the borders of our external resources handling area of our application and has no impact whatsoever on our core business processes.
+The following illustration should draw the picture a bit clearer from that perspective:
+<br />
+	<p align=center>
+		<img src="https://user-images.githubusercontent.com/1453985/112714067-b7366a00-8e95-11eb-9bb7-a5a047640f4a.png" />
+	</p>
+<br />
+
 
 Here's some common scenarios for mapping native or inner local exceptions to outer exceptions:
 
