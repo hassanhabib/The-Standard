@@ -54,7 +54,7 @@ Here's some examples for the most common combinations a processing service may o
 
 | Processing Operation					|   Primitive Functions		                                | 
 |------------------------				|-----------------------------------                        |
-| EnsureStudentExistsAsync				| RetrieveStudentById + AddStudentAsync                     | 
+| EnsureStudentExistsAsync				| RetrieveAllStudents + AddStudentAsync                     | 
 | UpsertStudentAsync				    | RetrieveStudentById + AddStudentAsync + ModifyStudentAsync|
 | VerifyStudentExists					| RetrieveAllStudents 								        |
 | TryRemoveStudentAsync				    | RetrieveStudentById + RemoveStudentByIdAsync 				|
