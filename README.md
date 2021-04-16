@@ -60,8 +60,9 @@
     - [1. On The Map](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#1-on-the-map)
     - [2. Characteristics](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#2-charachteristics)
       - [2.0 Language](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#20-language)
-        - [2.0.1 Functions Language](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#201-functions-language)
-        - [2.0.]
+        - [2.0.0 Functions Language](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#200-functions-language)
+        - [2.0.1 Pass-Through](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#201-pass-through)
+        - [2.0.2 Class-Level Language](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#202-class-level-language) 
       - [2.1 Dependencies](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#21-dependencies)
       - [2.2 One-Foundation](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#22-one-foundation)
       - [2.3 Used-Data-Only Validations](https://github.com/hassanhabib/The-Standard/blob/master/Services/Processings/Processings.md#23-used-data-only-validations)
