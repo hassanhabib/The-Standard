@@ -48,7 +48,7 @@ As Processing services in general are combinators of multiple primitive-level fu
 The language used in processing services define the level of complexity and the capabilities it offers.
 Usually, processing services combine two or more primitive operations from the foundation layer to create a new value.
 
-#### 2.0.1 Functions Language
+#### 2.0.0 Functions Language
 At a glance, Processing services language change from primitive operations such as `AddStudent` or `RemoveStudent` to `EnsureStudentExists` or `UpsertStudent`. they usually offer a more advanced business-logic operations to support a higher order functionality.
 Here's some examples for the most common combinations a processing service may offer:
 
@@ -61,11 +61,11 @@ Here's some examples for the most common combinations a processing service may o
 
 As you can see, the combination of primitive functions processing services do might also include adding an additional layer of logic on top of the existing primitive operation. For instance, `VerifyStudentExists` takes advantage of the `RetrieveAllStudents` primitive function, and then adds a boolean logic to verify the returned student by and Id from a query actually exists or not before returning a `boolean`.
 
-#### 2.0.2 Pass-Through
+#### 2.0.1 Pass-Through
 Processing services may borrow some of the terminology a foundation service may use. for instance, in a pass-through scenario, a processing service with be as simple as `AddStudentAsync`. we will discuss the architecture-balancing scenarios later in this chapter.
 Unlike Foundation services, Processing services are required to have the identifer `Processing` in their names. for instance, we say `StudentProcessingService`.
 
-#### 2.0.3 Class-Level Language
+#### 2.0.2 Class-Level Language
 More importantly Processing services must include the name of the entity that is supported by their corresponding Foundation service.
 For instance, if a Processing service is dependant on a `TeacherService`, then the Processing service name must be `TeacherProcessingService`.
 
