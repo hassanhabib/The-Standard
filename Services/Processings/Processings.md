@@ -24,7 +24,6 @@ TryCatch(async () =>
         _ => await this.studentService.ModifyStudentAsync(student.Id)
     };
 });
-
 ```
 
 Processing services make Foundation services nothing but a layer of validation on top of the existing primitive operations. Which means that Processing services functions are beyond primitive, and they only deal with local models as we will discuss in the upcoming sections.
@@ -42,7 +41,7 @@ On the right side of a Processing service lies all the non-local models and func
 On the left side of Processing services is pure local functionality, models and architecture. Starting from the Processing services themselves, there should be no trace or track of any native or non-local models in the system.
 
 ## 2. Charachteristics
-As Processing services in general are combinators of multiple primitive-level functions to produce a higher-order business logic. but they have much more charactristics than just that, let's talk about those here.
+Processing services in general are combiners of multiple primitive-level functions to produce a higher-order business logic. but they have much more charactristics than just that, let's talk about those here.
 
 ### 2.0 Language
 The language used in processing services define the level of complexity and the capabilities it offers.
@@ -77,7 +76,7 @@ Processing services can also use Utility brokers such as `TimeBroker` or `Loggin
 Processing services can interact with one and only one Foundation service. In fact without a foundation service there can never be a Processing layer. and just like we mentioned above about the language and naming, Processing services take on the exact same entity name as their Foundation dependency.
 
 ### 2.3 Used-Data-Only Validations
-Unlike the Foundation layer services, the Processing services only validate what it needs from it's input. For instance, if a Processing service is required to validate a student entity exists, and it's input model just happens to be an entire `Student` entity, it will only validate that the entity is not null and that the Id of that entity is valid. the rest of the entity is out of the concern of the Processing service.
+Unlike the Foundation layer services, Processing services only validate what it needs from it's input. For instance, if a Processing service is required to validate a student entity exists, and it's input model just happens to be an entire `Student` entity, it will only validate that the entity is not `null` and that the `Id` of that entity is valid. the rest of the entity is out of the concern of the Processing service.
 Processing services delegate full validations to the layer of services that is concerned with that which is the Foundation layer.
 Processing services are also not very concerned about outgoing validations except for what it's going to use within the same routine. For instance, if a Processing service is retrieving a model, and it's going to use this model to be passed to another primitive-level function on the Foundation layer, the Processing service will be required to validate that the retrieved model is valid depending on which attributes of the model it uses.
 
