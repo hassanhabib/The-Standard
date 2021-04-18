@@ -1,7 +1,7 @@
 # The Standard (v 1.0.1)
 
 - [0 Introcution](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.%20Introduction.md)
-- [1 Brokers](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md)
+- [1 Brokers](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md)
   - [1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#0-introduction)
   - [1.1 On The Map](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#1-on-the-map)
   - [1.2 Characteristics](https://github.com/hassanhabib/The-Standard/blob/master/Brokers/Brokers.md#2-characteristics)
