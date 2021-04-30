@@ -72,3 +72,6 @@
       - [2.2.3.0 Higher-Order Logic](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Processings/2.1%20Processings.md#2230-higher-order-logic)
         - [2.2.3.0.0 Shifters](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Processings/2.1%20Processings.md#22300-shifters)
         - [2.2.3.0.1 Combinations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Processings/2.1%20Processings.md#22301-combinations)
+      - [2.2.3.1 Signature Mapping](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Processings/2.1%20Processings.md#2231-signature-mapping)
+        - [2.2.3.1.0 Non-Exception Local Models](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Processings/2.1%20Processings.md#22310-non-exception-local-models)
+        - [2.2.3.1.1 Exception Models](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Processings/2.1%20Processings.md#22311-exception-models)
