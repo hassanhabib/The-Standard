@@ -85,3 +85,7 @@
         - [2.3.2.0.2 Class-Level Langugage](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23202-class-level-language)
       - [2.3.2.1 Dependencies](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#2321-dependencies)
         - [2.3.2.1.0 Dependency Balance (Florance Pattern)](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23210-dependency-balance-florance-pattern)
+        - [2.3.2.1.1 Two-Three](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23211-two-three)
+          - [2.3.2.1.1.0 Full-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232110-full-normalization)
+          - [2.3.2.1.1.1 Semi-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232111-semi-normalization)
+          - [2.3.2.1.1.2 No-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232112-no-normalization)
