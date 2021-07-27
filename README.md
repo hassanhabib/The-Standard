@@ -50,7 +50,7 @@
           - [2.1.3.0.0.1 Implementing Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213001-implementing-structural-validations)
         - [2.1.3.0.1 Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#21301-logical-validations)
           - [2.1.3.0.1.0 Testing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213010-testing-logical-validations)
-          - [2.1.3.0.1.1 Implementing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.0%20Foundations/2.0%20Foundations.md#213011-implementing-logical-validations)
+          - [2.1.3.0.1.1 Implementing Logical Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213011-implementing-logical-validations)
         - [2.1.3.0.2 Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#21302-dependency-validations)
           - [2.1.3.0.2.0 Testing Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213020-testing-dependency-validations)
           - [2.1.3.0.2.1 Implementing Dependency Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213021-implementing-dependency-validations)
