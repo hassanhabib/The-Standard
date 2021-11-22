@@ -98,3 +98,4 @@
           - [2.3.2.1.1.0 Full-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232110-full-normalization)
           - [2.3.2.1.1.1 Semi-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232111-semi-normalization)
           - [2.3.2.1.1.2 No-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232112-no-normalization)
+          - [2.3.2.1.1.3 Meaningful Breakdown](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232113-meaningful-breakdown)
