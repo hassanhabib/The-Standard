@@ -99,3 +99,6 @@
           - [2.3.2.1.1.1 Semi-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232111-semi-normalization)
           - [2.3.2.1.1.2 No-Normalization](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232112-no-normalization)
           - [2.3.2.1.1.3 Meaningful Breakdown](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#232113-meaningful-breakdown)
+      - [2.3.2.1 Contracts](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#2322-contracts)
+        - [2.3.2.1.0 Physical Contracts](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23220-physical-contracts)
+        - [2.3.2.1.1 Virtual Contracts](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23221-virtual-contracts) 
