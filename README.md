@@ -109,4 +109,4 @@
         - [2.3.3.0.1 Call Order](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23301-call-order)
           - [2.3.3.0.1.0 Natural Order](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#233010-natural-order)
           - [2.3.3.0.1.1 Enforced Order](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#233011-enforced-order)
-        - [2.3.3.0.2 Exceptions Mapping](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23302-exceptions-mapping)
+        - [2.3.3.0.2 Exceptions Mapping (Wrapping & Unwrapping)](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.3%20Orchestrations/2.3%20Orchestrations.md#23302-exceptions-mapping)
