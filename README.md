@@ -127,3 +127,6 @@
     - [2.4.3 Responsibilities](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.4%20Aggregations/2.4%20Aggregations.md#243-responsibilities)
       - [2.4.3.0 Abstraction](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.4%20Aggregations/2.4%20Aggregations.md#2430-abstraction)
       - [2.4.3.1 Exceptions Aggregation](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.4%20Aggregations/2.4%20Aggregations.md#2431-exceptions-aggregation)
+- [3. Exposers](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#3-exposers)
+  - [3.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#30-introduction)
+    - [3.0.0 ]
