@@ -129,4 +129,12 @@
       - [2.4.3.1 Exceptions Aggregation](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.4%20Aggregations/2.4%20Aggregations.md#2431-exceptions-aggregation)
 - [3. Exposers](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#3-exposers)
   - [3.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#30-introduction)
-    - [3.0.0 ]
+    - [3.0.0 Purpose](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#300-purpose)
+      - [3.0.0.0 Pure Mapping](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#3000-pure-mapping)
+    - [3.0.1 Types of Exposure Components](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#301-types-of-exposure-components)
+      - [3.0.1.0 Communication Protocols](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#3010-communication-protocols)
+      - [3.0.1.1 User Interfaces](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#3011-user-interfaces)
+      - [3.0.1.2 I/O Components](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#3012-io-components)
+    - [3.0.2 Single Point of Contact](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#302-single-point-of-contact)
+    - [3.0.3 Examples](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#303-examples)
+    - [3.0.4 Summary](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#304-summary)
