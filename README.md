@@ -138,3 +138,13 @@
     - [3.0.2 Single Point of Contact](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#302-single-point-of-contact)
     - [3.0.3 Examples](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#303-examples)
     - [3.0.4 Summary](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.%20Exposers.md#304-summary)
+  - [3.1 Communication Protocols](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#31-communication-protocols)
+    - [3.1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#310-introduction)
+      - [3.1.0.0 Principles & Rules](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#3100-principles--rules)
+        - [3.1.0.0.0 Results Communication](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#31000-results-communication)
+        - [3.1.0.0.1 Error Reports](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#31001-error-reports)
+      - [3.1.0.1 Common Types](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#3101-common-types)
+        - [3.1.0.1.0 REST](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#31010-rest)
+        - [3.1.0.1.1 Libraries](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#31011-libraries)
+        - [3.1.0.1.2 Other Types](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1%20Communication%20Protocols.md#31012-other-types)
+
