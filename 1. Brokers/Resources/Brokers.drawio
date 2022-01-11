@@ -1,0 +1,25 @@
+<mxfile host="65bd71144e">
+    <diagram id="jYahB1UCWjn4WiAoBhX7" name="1.0.0">
+        <mxGraphModel dx="1064" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" style="edgeStyle=none;html=1;sketch=1;curved=1;labelBackgroundColor=#808080;strokeColor=#808080;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Business Logic&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;sketch=1;rounded=1;fillColor=none;fontSize=15;labelBackgroundColor=none;fontColor=#808080;strokeColor=#808080;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="450" width="230" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" style="edgeStyle=none;html=1;entryX=0.087;entryY=0.513;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;curved=1;labelBackgroundColor=#808080;strokeColor=#808080;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font style=&quot;font-size: 15px&quot; color=&quot;#808080&quot;&gt;BROKERS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;fillColor=none;fontSize=11;labelBackgroundColor=none;strokeColor=#808080;" vertex="1" parent="1">
+                    <mxGeometry x="325" y="475" width="200" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font style=&quot;font-size: 15px&quot; color=&quot;#808080&quot;&gt;External Resources&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;sketch=1;rounded=1;fillColor=none;labelBackgroundColor=none;strokeColor=#808080;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="450" width="230" height="160" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
