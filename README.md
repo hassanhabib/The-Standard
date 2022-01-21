@@ -1,5 +1,9 @@
 # The Standard (v 2.0.1)
 
+Chat with us here:
+# Discord
+[![Discord](https://discord.com/api/guilds/934130100008538142/widget.png?style=banner2)](https://discord.gg/V2Nycw6q)
+
 - [0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.%20Introduction.md)
   - [0.0 Purposing, Modeling & Simulation](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.0%20Purposing%2C%20Modeling%20%26%20Simulation.md)
     - [0.0.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.0%20Purposing%2C%20Modeling%20%26%20Simulation.md)
