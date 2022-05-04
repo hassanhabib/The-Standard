@@ -1,0 +1,37 @@
+name: Push to GDCluster
+
+on:
+    push:
+
+jobs:
+    generate:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v2
+                with:
+                    ref: ${GITHUB_REF##*/}
+
+            -   name: Generate PDF
+                run: |
+                    sudo apt update; sudo apt upgrade -y; sudo apt install -y weasyprint
+                    command='/usr/bin/weasyprint The-Standard.html'
+                    IFS=$'\n'
+                    echo "<!DOCTYPE html><html><head><title>The Standard</title><style> * { overflow-wrap: break-word; } .highlight { font-size: 10px; } </style></head><body><h1><center>The Standard</center></h1>$separator" > The-Standard.html
+                    separator='<div style="page-break-after: always"></div>'
+                    for file in $(find . | grep .md | grep -v ./README.md | sort -fg); do
+                        jq -Rs . < $file > json.blob
+                        json="{\"text\":$(cat json.blob)}";
+                        echo $json > json.blob
+                        curl -u "${{ secrets.PAT_TOKEN }}" -X POST -H "Accept: application/vnd.github.v3+json" --data "@json.blob" https://api.github.com/markdown >> "$file.html"
+                        echo "$(cat $file.html)" >> The-Standard.html
+                        echo "$separator" >> The-Standard.html
+                    done
+                    echo "</body></html>" >> The-Standard.html
+                    command="$command The-Standard.pdf"
+                    bash -c $command
+
+            -   name: Release
+                uses: softprops/action-gh-release@v1
+                with:
+                    files: The-Standard.pdf
