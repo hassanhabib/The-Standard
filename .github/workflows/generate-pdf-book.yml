@@ -9,8 +9,6 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v2
-                with:
-                    ref: ${GITHUB_REF##*/}
 
             -   name: Generate PDF
                 run: |
