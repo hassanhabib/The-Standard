@@ -11,7 +11,7 @@ jobs:
 
             -   name: Generate PDF
                 run: |
-                    sudo apt update; sudo apt upgrade -y; sudo apt install -y weasyprint
+                    sudo apt install -y weasyprint
                     command='/usr/bin/weasyprint The-Standard.html'
                     IFS=$'\n'
                     echo "<!DOCTYPE html><html><head><title>The Standard</title><style> * { overflow-wrap: break-word; } .highlight { font-size: 10px; } </style></head><body><h1><center>The Standard</center></h1>$separator" > The-Standard.html
