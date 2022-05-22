@@ -42,6 +42,7 @@ Chat with us here:
         - [0.2.0.0.0 Excessive Inheritance](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#02000-excessive-inheritance)
         - [0.2.0.0.1 Entanglement](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#02001-entanglement)
         - [0.2.0.0.2 Autonomous Components](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#02002-autonomous-components)
+          - [0.2.0.0.2.0 No Magic](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#020020-no-magic)
     - [0.2.1 Rewritability](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#021-rewritability)
     - [0.2.2 Mono-Micro](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#022-mono-micro)
     - [0.2.3 Level 0](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#023-level-0)
