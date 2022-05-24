@@ -48,6 +48,7 @@ Chat with us here:
     - [0.2.3 Level 0](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#023-level-0)
     - [0.2.4 Open Code](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#024-open-code)
     - [0.2.5 Airplane Mode (Cloud-Foreign)](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#025-airplane-mode-cloud-foreign)
+    - [0.2.6 No Toasters](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#026-no-toasters)
 - [1 Brokers](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#1-brokers)
   - [1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#10-introduction)
   - [1.1 On The Map](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#11-on-the-map)
