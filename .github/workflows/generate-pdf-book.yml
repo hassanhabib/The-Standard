@@ -1,4 +1,4 @@
-name: Push to GDCluster
+name: Generate PDF artifact
 
 on: push
 
@@ -31,7 +31,6 @@ jobs:
                     echo "</body></html>" >> The-Standard.html
                     command="$command The-Standard.pdf"
                     bash -c $command
-
             - name: Archive production artifacts
               uses: actions/upload-artifact@v3
               with:
