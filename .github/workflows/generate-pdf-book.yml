@@ -32,8 +32,8 @@ jobs:
                     command="$command The-Standard.pdf"
                     bash -c $command
 
-            -   name: Release
-                uses: softprops/action-gh-release@v1
-                with:
-                    files: The-Standard.pdf
-                    token: ${{ secrets.RELEASE_TOKEN }}
+            - name: Archive production artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                name: output PDF
+                path: The-Standard.pdf
