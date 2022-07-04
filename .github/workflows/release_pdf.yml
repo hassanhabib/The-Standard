@@ -1,0 +1,38 @@
+name: Generate PDF artifact
+
+on: push
+
+jobs:
+    generate:
+        runs-on: ubuntu-latest
+        if: startsWith(github.ref, 'refs/tags/')
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   name: Generate PDF
+                run: |
+                    sudo apt install -y weasyprint
+                    command='/usr/bin/weasyprint The-Standard.html'
+                    IFS=$'\n'
+                    echo "<!DOCTYPE html><html><head><title>The Standard</title>
+                    <style>
+                     @page{size:A4!important}.highlight,p,pre,table,tbody,th,thead,tr{page-break-inside:avoid;break-inside:avoid;font-size:16px}table,tbody,th,thead,tr{font-size:10px!important}h1,h2,h3,h4,h5{page-break-after:avoid!important}h1:not(:nth-child(2)){page-break-before:always}article:not(:first-child){page-break-after:always}#readme{margin-left:50px;margin-right:25px}path,svg{display:none!important}pre,span{font-size:9px!important;font-weight:bolder!important}body{background-color:#fff}img{display:block;margin-left:auto;margin-right:auto}code{font-family:monospace;background-color:#fafbfc;padding:2px;border-radius:5px}*{color:#000;tab-size:2!important;overflow-wrap:break-word}td,th{border:2px solid}p{margin:10;line-height:1.5!important}h5{margin:0}h1,h2,h3,h4,h5{padding:0;margin:0}table{padding:2px}.pl-c{color:#6a737d}.pl-c1,.pl-s .pl-v{color:#005cc5}.pl-e,.pl-en{color:#6f42c1}.pl-s .pl-s1,.pl-smi{color:#000}.pl-ent{color:#22863a}.pl-k{color:#d73a49}.pl-pds,.pl-s,.pl-s .pl-pse .pl-s1,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre{color:#032f62}.pl-smw,.pl-v{color:#e36209}.pl-bu{color:#b31d28}.pl-ii{color:#fafbfc;background-color:#b31d28}.pl-c2{color:#fafbfc;background-color:#d73a49}.pl-sr .pl-cce{font-weight:700;color:#22863a}.pl-ml{color:#735c0f}.pl-mh,.pl-mh .pl-en,.pl-ms{font-weight:700;color:#005cc5}.pl-mi{font-style:italic;color:#24292e}.pl-mb{font-weight:700;color:#24292e}.pl-md{color:#b31d28;background-color:#ffeef0}.pl-mi1{color:#22863a;background-color:#f0fff4}.pl-mc{color:#e36209;background-color:#ffebda}.pl-mi2{color:#f6f8fa;background-color:#005cc5}.pl-mdr{font-weight:700;color:#6f42c1}.pl-ba{color:#586069}.pl-sg{color:#959da5}.pl-corl{text-decoration:underline;color:#032f62}
+                    </style>
+                    </head><body><center><h1>The Standard</h1></center>$separator" > The-Standard.html
+                    separator='<div style="page-break-after: always"></div>'
+                    for file in $(find . | grep .md | grep -v ./README.md | sort -fg); do
+                        jq -Rs . < $file > json.blob
+                        json="{\"text\":$(cat json.blob)}";
+                        echo $json > json.blob
+                        curl -u "${{ secrets.GITHUB_TOKEN }}" -X POST -H "Accept: application/vnd.github.v3+json" --data "@json.blob" https://api.github.com/markdown >> "$file.html"
+                        echo "$(cat $file.html)" >> The-Standard.html
+                        echo "$separator" >> The-Standard.html
+                    done
+                    echo "</body></html>" >> The-Standard.html
+                    command="$command The-Standard.pdf"
+                    bash -c $command
+            - name: Archive production artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                name: output PDF
+                path: The-Standard.pdf
