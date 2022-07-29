@@ -8,6 +8,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         steps:
             -   uses: actions/checkout@v2
+
             -   name: Generate PDF
                 run: |
                     sudo apt install -y weasyprint
