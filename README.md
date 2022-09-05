@@ -261,4 +261,5 @@ Chat with us here on Discord:
 - [The Standard in Turkish](https://github.com/hassanhabib/The-Standard-Turkish)
 - [The Standard in Greek](https://github.com/hassanhabib/The-Standard-Greek)
 - [The Standard in Albanian](https://github.com/hassanhabib/The-Standard-Albanian)
+- [The Standard in Portuguese](https://github.com/hassanhabib/The-Standard-Portuguese)
 
