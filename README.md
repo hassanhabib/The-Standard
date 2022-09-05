@@ -1,7 +1,7 @@
 # The Standard (v 2.0.1)
 
-Chat with us here:
-# Discord
+Chat with us here on Discord:
+
 [![Discord](https://discord.com/api/guilds/934130100008538142/widget.png?style=banner2)](https://discord.gg/vdPZ7hS52X)
 
 - [0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.%20Introduction.md)
@@ -248,4 +248,29 @@ Chat with us here:
           - [3.2.1.2.0.2 Pages](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321202-pages)
           - [3.2.1.2.0.3 Unobtrusiveness](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321203-unobtrusiveness)
           - [3.2.1.2.0.4 Organization](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321204-organization)
+
+## Translations
+- [The Standard in Arabic](https://github.com/hassanhabib/The-Standard-Arabic)
+- [The Standard in Ukrainian](https://github.com/hassanhabib/The-Standard-Ukrainian)
+
+The-Standard-French
+hassanhabib/The-Standard-French
+The-Standard-Italian
+hassanhabib/The-Standard-Italian
+The-Standard-Malaysian
+hassanhabib/The-Standard-Malaysian
+The-Standard-Uzbek
+hassanhabib/The-Standard-Uzbek
+The-Standard-German
+hassanhabib/The-Standard-German
+The-Standard-Spanish
+hassanhabib/The-Standard-Spanish
+The-Standard-Journal
+hassanhabib/The-Standard-Journal
+The-Standard-Turkish
+hassanhabib/The-Standard-Turkish
+The-Standard-Greek
+hassanhabib/The-Standard-Greek
+The-Standard-Albanian
+hassanhabib/The-Standard-Albanian
 
