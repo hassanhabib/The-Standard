@@ -252,25 +252,13 @@ Chat with us here on Discord:
 ## Translations
 - [The Standard in Arabic](https://github.com/hassanhabib/The-Standard-Arabic)
 - [The Standard in Ukrainian](https://github.com/hassanhabib/The-Standard-Ukrainian)
-
-The-Standard-French
-hassanhabib/The-Standard-French
-The-Standard-Italian
-hassanhabib/The-Standard-Italian
-The-Standard-Malaysian
-hassanhabib/The-Standard-Malaysian
-The-Standard-Uzbek
-hassanhabib/The-Standard-Uzbek
-The-Standard-German
-hassanhabib/The-Standard-German
-The-Standard-Spanish
-hassanhabib/The-Standard-Spanish
-The-Standard-Journal
-hassanhabib/The-Standard-Journal
-The-Standard-Turkish
-hassanhabib/The-Standard-Turkish
-The-Standard-Greek
-hassanhabib/The-Standard-Greek
-The-Standard-Albanian
-hassanhabib/The-Standard-Albanian
+- [The Standard in French](https://github.com/hassanhabib/The-Standard-French)
+- [The Standard in Italian](https://github.com/hassanhabib/The-Standard-Italian)
+- [The Standard in Malaysian](https://github.com/hassanhabib/The-Standard-Malaysian)
+- [The Standard in Uzbek](https://github.com/hassanhabib/The-Standard-Uzbek)
+- [The Standard in German](https://github.com/hassanhabib/The-Standard-German)
+- [The Standard in Spanish](https://github.com/hassanhabib/The-Standard-Spanish)
+- [The Standard in Turkish](https://github.com/hassanhabib/The-Standard-Turkish)
+- [The Standard in Greek](https://github.com/hassanhabib/The-Standard-Greek)
+- [The Standard in Albanian](https://github.com/hassanhabib/The-Standard-Albanian)
 
