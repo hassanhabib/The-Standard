@@ -264,4 +264,6 @@ Chat with us here on Discord:
 - [The Standard in Albanian](https://github.com/hassanhabib/The-Standard-Albanian)
 - [The Standard in Portuguese](https://github.com/hassanhabib/The-Standard-Portuguese)
 - [The Standard in Sinhala](https://github.com/hassanhabib/The-Standard-Sinhala)
+- [The Standard in Hindi](https://github.com/hassanhabib/The-Standard-Hindi)
+- [The Standard in Bulgarian](https://github.com/hassanhabib/The-Standard-Bulgarian)
 
