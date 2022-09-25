@@ -20,7 +20,7 @@ jobs:
                     </style>
                     </head><body><center><h1>The Standard</h1></center>$separator" > The-Standard.html
                     separator='<div style="page-break-after: always"></div>'
-                    for file in $(find . | grep .md | sort -fg); do
+                    for file in $(find . | grep .md | grep -v ./README.md | sort -fg); do
                         jq -Rs . < $file > json.blob
                         json="{\"text\":$(cat json.blob)}";
                         echo $json > json.blob
