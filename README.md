@@ -1,7 +1,7 @@
-# The Standard (v 2.0.1)
+# The Standard (v 2.0.3)
 
-Chat with us here:
-# Discord
+Chat with us here on Discord:
+
 [![Discord](https://discord.com/api/guilds/934130100008538142/widget.png?style=banner2)](https://discord.gg/vdPZ7hS52X)
 
 - [0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.%20Introduction.md)
@@ -49,6 +49,8 @@ Chat with us here:
     - [0.2.4 Open Code](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#024-open-code)
     - [0.2.5 Airplane Mode (Cloud-Foreign)](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#025-airplane-mode-cloud-foreign)
     - [0.2.6 No Toasters](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#026-no-toasters)
+    - [0.2.7 Pass Forward](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#027-pass-forward)
+  - [0.3 Testimonials](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.3%20Testimonials.md)
 - [1 Brokers](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#1-brokers)
   - [1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#10-introduction)
   - [1.1 On The Map](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#11-on-the-map)
@@ -247,4 +249,23 @@ Chat with us here:
           - [3.2.1.2.0.2 Pages](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321202-pages)
           - [3.2.1.2.0.3 Unobtrusiveness](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321203-unobtrusiveness)
           - [3.2.1.2.0.4 Organization](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321204-organization)
+
+## Translations
+- [The Standard in Arabic](https://github.com/hassanhabib/The-Standard-Arabic)
+- [The Standard in Ukrainian](https://github.com/hassanhabib/The-Standard-Ukrainian)
+- [The Standard in French](https://github.com/hassanhabib/The-Standard-French)
+- [The Standard in Italian](https://github.com/hassanhabib/The-Standard-Italian)
+- [The Standard in Malaysian](https://github.com/hassanhabib/The-Standard-Malaysian)
+- [The Standard in Uzbek](https://github.com/hassanhabib/The-Standard-Uzbek)
+- [The Standard in German](https://github.com/hassanhabib/The-Standard-German)
+- [The Standard in Spanish](https://github.com/hassanhabib/The-Standard-Spanish)
+- [The Standard in Turkish](https://github.com/hassanhabib/The-Standard-Turkish)
+- [The Standard in Greek](https://github.com/hassanhabib/The-Standard-Greek)
+- [The Standard in Albanian](https://github.com/hassanhabib/The-Standard-Albanian)
+- [The Standard in Portuguese](https://github.com/hassanhabib/The-Standard-Portuguese)
+- [The Standard in Sinhala](https://github.com/hassanhabib/The-Standard-Sinhala)
+- [The Standard in Hindi](https://github.com/hassanhabib/The-Standard-Hindi)
+- [The Standard in Bulgarian](https://github.com/hassanhabib/The-Standard-Bulgarian)
+- [The Standard in Polish](https://github.com/hassanhabib/The-Standard-Polish)
+- [The Standard in Urdu](https://github.com/hassanhabib/The-Standard-Urdu)
 
