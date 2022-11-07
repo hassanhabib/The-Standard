@@ -284,3 +284,4 @@ Chat with us here on Discord:
 - [The Standard in Scala](https://github.com/hassanhabib/StandardScala)
 - [The Standard in R](https://github.com/hassanhabib/StandardR)
 - [The Standard in Kotlin](https://github.com/hassanhabib/StandardKotlin)
+- [The Standard in Java](https://github.com/hassanhabib/StandardJava)
