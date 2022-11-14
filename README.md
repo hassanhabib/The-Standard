@@ -285,3 +285,4 @@ Chat with us here on Discord:
 - [The Standard in R](https://github.com/hassanhabib/StandardR)
 - [The Standard in Kotlin](https://github.com/hassanhabib/StandardKotlin)
 - [The Standard in Java](https://github.com/hassanhabib/StandardJava)
+- [The Standard in Python](https://github.com/hassanhabib/StandardPython)
