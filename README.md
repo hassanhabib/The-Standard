@@ -1,4 +1,4 @@
-# The Standard (v 2.0.3)
+# The Standard (v 1444.06.14)
 
 Chat with us here on Discord:
 
