@@ -266,6 +266,12 @@ Chat with us here on Discord:
           - [3.2.1.2.0.3 Unobtrusiveness](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321203-unobtrusiveness)
           - [3.2.1.2.0.4 Organization](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2.1%20Web%20Applications/3.2.1%20Web%20Applications.md#321204-organization)
 
+## Other Resources
+- Guidelines for [C# Coding Standards](https://github.com/hassanhabib/CSharpCodingStandard/blob/master/Readme.md) 
+- [The Team Standard](https://github.com/hassanhabib/The-Standard-Team/blob/main/README.md) is the engineering Standard for team culture, practices and code of conduct.
+- [The Standard for System Design & Architecture](https://github.com/hassanhabib/The-Standard-Systems-Design/blob/main/README.md)
+- [The Standard Codex](https://github.com/hassanhabib/The-Standard-Codex/blob/main/README.md) - It's not enough to know the truth, you must have the courage to wield it into existence.
+
 ## Translations
 - [The Standard in Arabic](https://github.com/hassanhabib/The-Standard-Arabic)
 - [The Standard in Ukrainian](https://github.com/hassanhabib/The-Standard-Ukrainian)
