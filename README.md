@@ -108,6 +108,7 @@ Chat with us here on Discord:
           - [2.1.3.1.1.0 Upsertable Exceptions](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213110-upsertable-exceptions)
           - [2.1.3.1.1.1 Dynamic Rules](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213111-dynamic-rules)
           - [2.1.3.1.1.2 Rules & Validations Collector](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213112-rules--validations-collector)
+          - [2.1.3.1.1.3 Hybrid Continuous Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213113-hybrid-continuous-validations)
         - [2.1.3.1.2 Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#21312-structural-validations)
           - [2.1.3.1.2.0 Testing Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213120-testing-structural-validations)
           - [2.1.3.1.2.1 Implementing Structural Validations](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#213121-implementing-structural-validations)
