@@ -50,6 +50,7 @@ Chat with us here on Discord:
     - [0.2.5 Airplane Mode (Cloud-Foreign)](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#025-airplane-mode-cloud-foreign)
     - [0.2.6 No Toasters](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#026-no-toasters)
     - [0.2.7 Pass Forward](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#027-pass-forward)
+    - [0.2.8 All-In/All-Out](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#028-all-inall-out)
   - [0.3 Testimonials](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.3%20Testimonials.md)
 - [1 Brokers](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#1-brokers)
   - [1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#10-introduction)
