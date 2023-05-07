@@ -93,6 +93,8 @@ Chat with us here on Discord:
       - [2.0.2.2 Single Exposure Point](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.%20Services.md#2022-single-exposure-point)
       - [2.0.2.3 Same or primitives I/O Model](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.%20Services.md#2023-same-or-primitives-io-model)
       - [2.0.2.4 Every Service for Itself](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.%20Services.md#2024-every-service-for-itself)
+      - [2.0.2.5 Flow Forward](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.%20Services.md#2025-flow-forward)
+        - [2.0.2.6 For APIs](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.%20Services.md#20250-for-apis)
   - [2.1 Foundation Services](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#21-foundation-services-broker-neighboring)
     - [2.1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#210-introduction)
     - [2.1.1 On The Map](https://github.com/hassanhabib/The-Standard/blob/master/2.%20Services/2.1%20Foundations/2.1%20Foundations.md#211-on-the-map)
