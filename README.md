@@ -1,4 +1,7 @@
-# The Standard (v 1444.06.14)
+# The Standard
+
+[![The Standard](https://img.shields.io/github/v/release/hassanhabib/The-Standard?style=plastic&label=Standard%20Version&labelColor=6E8AD6&color=0D1117)](https://github.com/hassanhabib/The-Standard)
+[![The Standard Community](https://img.shields.io/discord/934130100008538142?style=plastic&color=%237289da&label=The%20Standard%20Community&logo=Discord)](https://discord.gg/vdPZ7hS52X)
 
 Chat with us here on Discord:
 
