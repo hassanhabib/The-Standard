@@ -306,3 +306,10 @@ Chat with us here on Discord:
 - [The Standard in Kotlin](https://github.com/hassanhabib/StandardKotlin)
 - [The Standard in Java](https://github.com/hassanhabib/StandardJava)
 - [The Standard in Python](https://github.com/hassanhabib/StandardPython)
+
+## Projects
+- [The Standard OpenAI Library](https://github.com/hassanhabib/Standard.AI.OpenAI)
+- [LeVent](https://github.com/hassanhabib/LeVent)
+- [RESTFulSense](https://github.com/hassanhabib/RESTFulSense)
+- [Xeptions](https://github.com/hassanhabib/Xeption)
+- [EFxceptions](https://github.com/hassanhabib/EFxceptions)
