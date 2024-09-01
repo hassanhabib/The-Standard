@@ -309,6 +309,7 @@ Chat with us here on Discord:
 - [The Standard in Kotlin](https://github.com/hassanhabib/StandardKotlin)
 - [The Standard in Java](https://github.com/hassanhabib/StandardJava)
 - [The Standard in Python](https://github.com/hassanhabib/StandardPython)
+- [The Standard in TypeScript](https://github.com/hassanhabib/Standard.Universal.TypeScript)
 
 ## Projects
 - [The Standard OpenAI Library](https://github.com/hassanhabib/Standard.AI.OpenAI)
