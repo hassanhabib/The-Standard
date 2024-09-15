@@ -301,6 +301,7 @@ Chat with us here on Discord:
 - [The Standard in Polish](https://github.com/hassanhabib/The-Standard-Polish)
 - [The Standard in Urdu](https://github.com/hassanhabib/The-Standard-Urdu)
 - [The Standard in Azerbaijani](https://github.com/hassanhabib/The-Standard-Azerbaijani)
+- [The Standard in Russian](https://github.com/hassanhabib/The-Standard-Russian)
 
 ## The Standard in Different Programming Languages
 - [The Standard in Go](https://github.com/hassanhabib/StandardGoLang)
