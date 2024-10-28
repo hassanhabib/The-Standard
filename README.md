@@ -235,6 +235,8 @@ Chat with us here on Discord:
       - [3.1.1.3 Organization](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1.1%20RESTful%20APIs/3.1.1%20RESTful%20APIs.md#3113-organization)
       - [3.1.1.4 Home Controller](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1.1%20RESTful%20APIs/3.1.1%20RESTful%20APIs.md#3114-home-controller)
       - [3.1.1.5 Tests](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1.1%20RESTful%20APIs/3.1.1%20RESTful%20APIs.md#3115-tests)
+        - [3.1.1.5.0 Unit Tests](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1.1%20RESTful%20APIs/3.1.1%20RESTful%20APIs.md#31150-unit-tests)
+        - [3.1.1.5.1 Acceptance Tests](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.1%20Communication%20Protocols/3.1.1%20RESTful%20APIs/3.1.1%20RESTful%20APIs.md#31151-acceptance-tests)
   - [3.2 User Interfaces](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2%20User%20Interfaces.md)
     - [3.2.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2%20User%20Interfaces.md#320-introduction)
       - [3.2.0.0 Principles & Rules](https://github.com/hassanhabib/The-Standard/blob/master/3.%20Exposers/3.2%20User%20Interfaces/3.2%20User%20Interfaces.md#3200-principles--rules)
