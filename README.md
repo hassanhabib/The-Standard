@@ -54,6 +54,8 @@ Chat with us here on Discord:
     - [0.2.6 No Toasters](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#026-no-toasters)
     - [0.2.7 Pass Forward](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#027-pass-forward)
     - [0.2.8 All-In/All-Out](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#028-all-inall-out)
+    - [0.2.9 Readability Over Optimization](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#029-readability-over-optimization)
+    - [0.2.10 Last Day](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.2%20Principles.md#0210-last-day)
   - [0.3 Testimonials](https://github.com/hassanhabib/The-Standard/blob/master/0.%20Introduction/0.3%20Testimonials.md)
 - [1 Brokers](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#1-brokers)
   - [1.0 Introduction](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#10-introduction)
