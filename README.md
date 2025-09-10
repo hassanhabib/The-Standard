@@ -69,6 +69,7 @@ Chat with us here on Discord:
     - [1.2.5 Naming Conventions](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#125-naming-conventions)
     - [1.2.6 Language](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#126-language)
     - [1.2.7 Up & Sideways](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#127-up--sideways)
+    - [1.2.8 One Resource, One Broker](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#128-one-resource-one-broker)
   - [1.3 Organization](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#13-organization)
   - [1.4 Broker Types](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#14-broker-types)
     - [1.4.0 Entity Brokers](https://github.com/hassanhabib/The-Standard/blob/master/1.%20Brokers/1.%20Brokers.md#140-entity-brokers)
